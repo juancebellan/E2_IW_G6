@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Proyectos</title>
+</head>
+<body>
+    <h1>Proyectos</h1>
+    <ul>
+        {% for cliente in clientes %}
+            <li>
+                {{ cliente.nombre }}
+                <br> Pertenece a: {{ cliente.Proyecto }}
+            </li>
+        {% empty %}
+            <li>No hay empresas disponibles.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
