@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block content %}
+<h1>Empleados</h1>
+<ul>
+  {% for empleado in empleados %}
+  <li>{{ empleado.nombre }} {{ empleado.apellidos }}</li>
+    <ul>
+      <li>Teléfono: {{ empleado.telefono }}</li>
+      <li>Email: {{ empleado.email }}</li>
+      <li>Proyecto: {{ empleado.proyecto }}</li>
+    </ul>
+  </li>
+  {% empty %}
+  <li>No hay empleados disponibles.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

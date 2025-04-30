@@ -1,9 +1,14 @@
 {% extends "base.html" %} {% block content %}
 <div class="text-center mt-5">
-  <h1>Bienvenido al Sistema de Gestión de Proyectos</h1>
-  <p>Explora los proyectos, tareas, clientes y empleados.</p>
+  <h1>App</h1>
+  <p>Proyectos, tareas, clientes y empleados.</p>
   <a href="{% url 'proyecto_list' %}" class="btn btn-primary mt-3"
-    >Ver proyectos</a
-  >
+    >Proyectos
+  </a>
+  <a href="{% url 'cliente_list' %}" class="btn btn-primary mt-3">Clientes </a>
+  <a href="{% url 'empleado_list' %}" class="btn btn-primary mt-3"
+    >Empleados
+  </a>
+  <a href="{% url 'tarea_list' %}" class="btn btn-primary mt-3">Tareas </a>
 </div>
 {% endblock %}

@@ -13,7 +13,10 @@
       <nav>
         <a href="{% url 'landing' %}">Inicio</a> |
         <a href="{% url 'proyecto_list' %}">Proyectos</a> |
-        <a href="{% url 'cliente_list' %}">Clientes</a>
+        <a href="{% url 'cliente_list' %}">Clientes</a> |
+        <a href="{% url 'empleado_list' %}">Empleados</a> |
+        <a href="{% url 'tarea_list' %}">Tareas</a> |
+        <a href="{% url 'admin:index' %}">Admin</a>
       </nav>
       <hr />
       {% block content %}{% endblock %}
