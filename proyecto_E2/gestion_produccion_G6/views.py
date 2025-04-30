@@ -5,15 +5,15 @@ from .models import Cliente, Proyecto
 
 
 
-def index(request):
- return HttpResponse("Hello, world!")
+def landing(request):
+    return render(request, 'landing.html')
 
-class ProyectosListView(ListView):
+class ProyectoListView(ListView):
     model = Proyecto
-    template_name = 'Proyectos_detail.html'
+    template_name = 'proyecto_list.html'
     context_object_name = 'proyectos'
 
 class ClienteListView(ListView):
     model = Cliente
-    template_name = 'Cliente_detail.html'  # nombre del template que vas a usar
+    template_name = 'cliente_list.html'
     context_object_name = 'clientes'

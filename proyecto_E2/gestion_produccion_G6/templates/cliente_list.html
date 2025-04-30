@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<h1>Clientes</h1>
+<ul>
+  {% for cliente in clientes %}
+  <li>
+    {{ cliente.nombre }}<br />
+    Pertenece a: {{ cliente.proyecto }}
+  </li>
+  {% empty %}
+  <li>No hay clientes disponibles.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

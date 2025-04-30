@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gestión de Proyectos</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <nav>
+        <a href="{% url 'landing' %}">Inicio</a> |
+        <a href="{% url 'proyecto_list' %}">Proyectos</a> |
+        <a href="{% url 'cliente_list' %}">Clientes</a>
+      </nav>
+      <hr />
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>
