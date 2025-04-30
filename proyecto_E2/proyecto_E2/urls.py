@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 urlpatterns = [
- path('admin/', admin.site.urls),
- path('GP/', include('gestion_produccion_G6.urls'))
+    path('', include('gestion_produccion_G6.urls')),
+    path('admin/', admin.site.urls),
+    path('GP/', include('gestion_produccion_G6.urls'))
 ]
 
