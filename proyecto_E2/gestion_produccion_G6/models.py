@@ -38,8 +38,24 @@ class Tarea(models.Model):
     descripcion = models.TextField(default="Descripción de la tarea")
     fecha_ini = models.DateField(default=datetime.date.today)
     fecha_fin = models.DateField(default=datetime.date.today)
-    prioridad = models.CharField(choices=[('Baja', 'Baja'), ('Media', 'Media'), ('Alta', 'Alta')], default='Baja')
-    estado = models.CharField(choices=[('Abierto', 'Abierto'), ('Asignado', 'Asignado'), ('En proceso','En proceso'),('Finalizada', 'Finalizada')], default='En proceso')
+    prioridad = models.CharField(
+        max_length=20,
+        choices=[
+            ('Baja', 'Baja'), 
+            ('Media', 'Media'), 
+            ('Alta', 'Alta')],
+        default='Baja'
+    )    
+    estado = models.CharField(
+        max_length=20,
+        choices=[
+            ('Abierto', 'Abierto'),
+            ('Asignado', 'Asignado'),
+            ('En proceso', 'En proceso'),
+            ('Finalizada', 'Finalizada')
+        ],
+        default='Abierto'
+    )    
     notas = models.TextField(default="Notas del empleado")
     def __str__(self):
         return self.nombre
