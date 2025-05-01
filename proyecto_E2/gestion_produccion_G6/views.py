@@ -48,12 +48,11 @@ class ClienteCreateView(CreateView):
     template_name = 'cliente_form.html'
     success_url = reverse_lazy('cliente_list')
 
-class ClienteUpdateView(CreateView):
+class ClienteUpdateView(UpdateView):
     model = Cliente
     fields = '__all__'
     template_name = 'cliente_form.html'
     success_url = reverse_lazy('cliente_list')
-    context_object_name = "mi_cliente"
 
 class ClienteDetailView(DetailView):
     model = Cliente
@@ -64,7 +63,6 @@ class ClienteDeleteView(DeleteView):
     model = Proyecto
     template_name = 'cliente_confirm_delete.html'
     success_url = reverse_lazy('cliente_list')
-    context_object_name = "mi_cliente"
 
 
 

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{% if mi_cliente %}Editar{% else %}Nuevo{% endif %} Cliente</h1>
+<h1>{% if form.instance.pk %}Editar{% else %}Nuevo{% endif %} Cliente
+</h1>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
