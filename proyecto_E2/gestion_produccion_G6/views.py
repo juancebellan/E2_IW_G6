@@ -74,7 +74,29 @@ class EmpleadoListView(ListView):
     template_name = 'empleado_list.html'
     context_object_name = 'empleados'
     
+class EmpleadoDetailView(DetailView):
+    model = Empleado
+    template_name = 'empleado_detail.html'
+    context_object_name = 'empleado'
 
+class EmpleadoCreateView(CreateView):
+    model = Empleado
+    fields = '__all__'
+    template_name = 'empleado_form.html'
+    success_url = reverse_lazy('empleado_list')
+
+class EmpleadoUpdateView(UpdateView):
+    model = Empleado
+    fields = '__all__'
+    template_name = 'empleado_form.html'
+    success_url = reverse_lazy('empleado_list')
+
+class EmpleadoDeleteView(DeleteView):
+    model = Empleado
+    template_name = 'empleado_confirm_delete.html'
+    success_url = reverse_lazy('empleado_list')
+
+    
 # TAREA
 class TareaListView(ListView):
     model = Tarea

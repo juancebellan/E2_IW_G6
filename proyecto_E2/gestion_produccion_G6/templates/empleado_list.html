@@ -1,16 +1,18 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 <h1>Empleados</h1>
-<ul>
+<a href="{% url 'empleado_create' %}" class="btn btn-success mb-3">Nuevo Empleado</a>
+<ul class="list-group">
   {% for empleado in empleados %}
-  <li>{{ empleado.nombre }} {{ empleado.apellidos }}</li>
-    <ul>
-      <li>Teléfono: {{ empleado.telefono }}</li>
-      <li>Email: {{ empleado.email }}</li>
-      <li>Proyecto: {{ empleado.proyecto }}</li>
-    </ul>
+  <li class="list-group-item">
+    <strong>{{ empleado.nombre }} {{ empleado.apellidos }}</strong><br>
+    Email: {{ empleado.email }} | Teléfono: {{ empleado.telefono }}<br>
+    <a href="{% url 'empleado_detail' empleado.pk %}" class="btn btn-sm btn-primary">Ver</a>
+    <a href="{% url 'empleado_update' empleado.pk %}" class="btn btn-sm btn-warning">Editar</a>
+    <a href="{% url 'empleado_delete' empleado.pk %}" class="btn btn-sm btn-danger">Borrar</a>
   </li>
   {% empty %}
-  <li>No hay empleados disponibles.</li>
+  <li class="list-group-item">No hay empleados disponibles.</li>
   {% endfor %}
 </ul>
 {% endblock %}
