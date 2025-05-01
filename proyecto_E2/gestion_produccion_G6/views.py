@@ -42,6 +42,30 @@ class ClienteListView(ListView):
     template_name = 'cliente_list.html'
     context_object_name = 'clientes'
 
+class ClienteCreateView(CreateView):
+    model = Cliente
+    fields = '__all__'
+    template_name = 'cliente_form.html'
+    success_url = reverse_lazy('cliente_list')
+
+class ClienteUpdateView(CreateView):
+    model = Cliente
+    fields = '__all__'
+    template_name = 'cliente_form.html'
+    success_url = reverse_lazy('cliente_list')
+    context_object_name = "mi_cliente"
+
+class ClienteDetailView(DetailView):
+    model = Cliente
+    template_name = 'cliente_detail.html'
+    context_object_name = "mi_cliente"
+
+class ClienteDeleteView(DeleteView):
+    model = Proyecto
+    template_name = 'cliente_confirm_delete.html'
+    success_url = reverse_lazy('cliente_list')
+    context_object_name = "mi_cliente"
+
 
 
 # EMPLEADO
@@ -56,3 +80,4 @@ class TareaListView(ListView):
     model = Tarea
     template_name = 'tarea_list.html'
     context_object_name = 'tareas'
+

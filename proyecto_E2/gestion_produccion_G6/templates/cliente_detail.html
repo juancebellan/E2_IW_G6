@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Detalle del cliente</h1>
+<ul class="list-group">
+  <li class="list-group-item"><strong>Proyecto asociado: </strong> {{ mi_cliente.proyecto }}</li>
+  <li class="list-group-item"><strong>Número de identificación fiscal (CIF): </strong> {{ mi_cliente.cif }}</li>
+  <li class="list-group-item"><strong>Nombre: </strong> {{ mi_cliente.nombre }}</li>
+  <li class="list-group-item"><strong>Nacionalidad: </strong> {{ mi_cliente.nacionalidad }}</li>
+</ul>
+<a href="{% url 'cliente_update' mi_cliente.pk %}" class="btn btn-warning mt-3">Editar</a>
+<a href="{% url 'cliente_delete' mi_cliente.pk %}" class="btn btn-danger mt-3">Eliminar</a>
+<a href="{% url 'cliente_list' %}" class="btn btn-secondary mt-3">Volver al listado</a>
+{% endblock %}

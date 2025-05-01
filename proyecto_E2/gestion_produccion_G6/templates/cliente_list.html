@@ -1,13 +1,18 @@
+
 {% extends "base.html" %} {% block content %}
 <h1>Clientes</h1>
-<ul>
+<a href="{% url 'cliente_create' %}" class="btn btn-success mb-3">Nuevo Cliente</a>
+<ul class="list-group">
   {% for cliente in clientes %}
-  <li>
-    {{ cliente.nombre }}<br />
-    Pertenece a: {{ cliente.proyecto }}
+  <li class="list-group-item">
+    <strong>{{ cliente.nombre }}</strong><br>
+    CIF: {{ cliente.cif}}<br>
+    <a href="{% url 'cliente_detail' cliente.pk %}" class="btn btn-sm btn-primary">Ver</a>
+    <a href="{% url 'cliente_update' cliente.pk %}" class="btn btn-sm btn-warning">Editar</a>
+    <a href="{% url 'cliente_delete' cliente.pk %}" class="btn btn-sm btn-danger">Borrar</a>
   </li>
   {% empty %}
-  <li>No hay clientes disponibles.</li>
+  <li class="list-group-item">No hay proyectos disponibles.</li>
   {% endfor %}
 </ul>
 {% endblock %}
