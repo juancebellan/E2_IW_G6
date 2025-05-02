@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Listado de Proyectos</title>
-</head>
-<body>
-    <h1>Clientes</h1>
-    <ul>
-        {% for Tarea in Tareas %}
-            <li>
-                {{ Tarea.nombre }} <br> descripcion: {{ Tarea.descripcion }}
-            </li>
-        {% empty %}
-            <li>No hay empresas disponibles.</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h1>Detalle de la Tarea</h1>
+<ul class="lista_general">
+  <li class="lista"><strong>Nombre:</strong> {{ mi_tarea.nombre }}</li>
+  <li class="lista"><strong>Descripción:</strong> {{ mi_tarea.descripcion }}</li>
+  <li class="lista"><strong>Proyecto:</strong> {{ tarea.proyecto }}</li>
+  <li class="lista"><strong>Empleado asignado:</strong> {{ mi_tarea.empleado }}</li>
+  <li class="lista"><strong>Fecha de inicio:</strong> {{ mi_tarea.fecha_ini }}</li>
+  <li class="lista"><strong>Fecha de fin:</strong> {{ mi_tarea.fecha_fin }}</li>
+  <li class="lista"><strong>Prioridad:</strong> {{ mi_tarea.prioridad }}</li>
+  <li class="lista"><strong>Estado:</strong> {{ mi_tarea.estado }}</li>
+  <li class="lista"><strong>Notas:</strong> {{ mi_tarea.notas }}</li>
+</ul>
+<a href="{% url 'tarea_update' mi_tarea.pk %}" class="boton_editar">Editar</a>
+<a href="{% url 'tarea_delete' mi_tarea.pk %}" class="boton_eliminar">Eliminar</a>
+<a href="{% url 'tarea_list' %}" class="boton_cancelar">Volver al listado</a>
+{% endblock %}

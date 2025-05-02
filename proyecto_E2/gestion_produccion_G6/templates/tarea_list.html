@@ -1,10 +1,21 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 <h1>Tareas</h1>
-<ul>
-  {% for tarea in tareas %}
-  <li>{{ tarea.nombre }}</li>
+<a href="{% url 'tarea_create' %}" class="boton_crear">Nueva Tarea</a>
+<ul class="lista_general">
+  {% for tarea in mi_tarea %}
+  <li class="lista">
+    <strong>{{ tarea.nombre }}</strong><br>
+    Proyecto: {{ tarea.proyecto }}<br>
+    Empleado: {{ tarea.empleado }}<br>
+    Estado: {{ tarea.estado }}<br>
+    <a href="{% url 'tarea_detail' tarea.pk %}" class="boton_ver">Ver</a>
+    <a href="{% url 'tarea_update' tarea.pk %}" class="boton_editar">Editar</a>
+    <a href="{% url 'tarea_delete' tarea.pk %}" class="boton_eliminar">Borrar</a>
+  </li>
   {% empty %}
-  <li>No hay tareas disponibles.</li>
+  <li class="lista">No hay tareas disponibles.</li>
   {% endfor %}
 </ul>
 {% endblock %}
+

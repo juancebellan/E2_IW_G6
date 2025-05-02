@@ -99,5 +99,29 @@ class EmpleadoDeleteView(DeleteView):
 class TareaListView(ListView):
     model = Tarea
     template_name = 'tarea_list.html'
-    context_object_name = 'tareas'
+    context_object_name = 'mi_tarea'
+
+class TareaDetailView(DetailView):
+    model = Tarea
+    template_name = 'tarea_detail.html'
+    context_object_name = 'mi_tarea'
+
+class TareaCreateView(CreateView):
+    model = Tarea
+    fields = '__all__'
+    template_name = 'tarea_form.html'
+    success_url = reverse_lazy('tarea_list')
+    context_object_name = "tareas"
+
+class TareaUpdateView(UpdateView):
+    model = Tarea
+    fields = '__all__'
+    template_name = 'tarea_form.html'
+    success_url = reverse_lazy('tarea_list')
+    context_object_name = "tareas"
+
+class TareaDeleteView(DeleteView):
+    model = Tarea
+    template_name = 'tarea_confirm_delete.html'
+    success_url = reverse_lazy('tarea_list')
 
