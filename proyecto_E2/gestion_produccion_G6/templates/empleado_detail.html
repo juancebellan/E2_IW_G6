@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Detalle del Empleado</h1>
-<ul class="list-group">
-  <li class="list-group-item"><strong>Nombre:</strong> {{ empleado.nombre }}</li>
-  <li class="list-group-item"><strong>Apellidos:</strong> {{ empleado.apellidos }}</li>
-  <li class="list-group-item"><strong>DNI:</strong> {{ empleado.dni }}</li>
-  <li class="list-group-item"><strong>Email:</strong> {{ empleado.email }}</li>
-  <li class="list-group-item"><strong>Teléfono:</strong> {{ empleado.telefono }}</li>
+<ul class="lista_general">
+  <li class="lista"><strong>Nombre:</strong> {{ empleado.nombre }}</li>
+  <li class="lista"><strong>Apellidos:</strong> {{ empleado.apellidos }}</li>
+  <li class="lista"><strong>DNI:</strong> {{ empleado.dni }}</li>
+  <li class="lista"><strong>Email:</strong> {{ empleado.email }}</li>
+  <li class="lista"><strong>Teléfono:</strong> {{ empleado.telefono }}</li>
 </ul>
-<a href="{% url 'empleado_update' empleado.pk %}" class="btn btn-warning mt-3">Editar</a>
-<a href="{% url 'empleado_delete' empleado.pk %}" class="btn btn-danger mt-3">Eliminar</a>
-<a href="{% url 'empleado_list' %}" class="btn btn-secondary mt-3">Volver al listado</a>
+<a href="{% url 'empleado_update' empleado.pk %}" class="boton_editar">Editar</a>
+<a href="{% url 'empleado_delete' empleado.pk %}" class="boton_eliminar">Eliminar</a>
+<a href="{% url 'empleado_list' %}" class="boton_cancelar">Volver al listado</a>
 {% endblock %}

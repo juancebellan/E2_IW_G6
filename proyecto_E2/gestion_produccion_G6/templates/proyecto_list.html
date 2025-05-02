@@ -1,17 +1,17 @@
 {% extends "base.html" %} {% block content %}
 <h1>Proyectos</h1>
-<a href="{% url 'proyecto_create' %}" class="btn btn-success mb-3">Nuevo Proyecto</a>
-<ul class="list-group">
+<a href="{% url 'proyecto_create' %}" class="boton_crear">Nuevo Proyecto</a>
+<ul class="lista_general">
   {% for proyecto in proyectos %}
-  <li class="list-group-item">
+  <li class="lista">
     <strong>{{ proyecto.nombre }}</strong><br>
     Descripción: {{ proyecto.descripcion }}<br>
-    <a href="{% url 'proyecto_detail' proyecto.pk %}" class="btn btn-sm btn-primary">Ver</a>
-    <a href="{% url 'proyecto_update' proyecto.pk %}" class="btn btn-sm btn-warning">Editar</a>
-    <a href="{% url 'proyecto_delete' proyecto.pk %}" class="btn btn-sm btn-danger">Borrar</a>
+    <a href="{% url 'proyecto_detail' proyecto.pk %}" class="boton_ver">Ver</a>
+    <a href="{% url 'proyecto_update' proyecto.pk %}" class="boton_editar">Editar</a>
+    <a href="{% url 'proyecto_delete' proyecto.pk %}" class="boton_eliminar">Borrar</a>
   </li>
   {% empty %}
-  <li class="list-group-item">No hay proyectos disponibles.</li>
+  <li class="lista">No hay proyectos disponibles.</li>
   {% endfor %}
 </ul>
 {% endblock %}

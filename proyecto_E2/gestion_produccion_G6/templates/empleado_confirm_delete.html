@@ -5,7 +5,7 @@
 <p><strong>{{ empleado.nombre }} {{ empleado.apellidos }}</strong></p>
 <form method="post">
     {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
-    <a href="{% url 'empleado_list' %}" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="boton_eliminar">Sí, eliminar</button>
+    <a href="{% url 'empleado_list' %}" class="boton_cancelar">Cancelar</a>
 </form>
 {% endblock %}

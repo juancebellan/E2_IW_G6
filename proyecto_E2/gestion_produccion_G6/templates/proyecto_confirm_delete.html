@@ -4,7 +4,7 @@
 <p><strong>{{ proyecto.nombre }}</strong></p>
 <form method="post">
   {% csrf_token %}
-  <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+  <button type="submit" class="boton_eliminar">Sí, eliminar</button>
   <a href="{% url 'proyecto_list' %}" class="btn btn-secondary">Cancelar</a>
 </form>
 {% endblock %}

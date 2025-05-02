@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Detalle del Proyecto</h1>
-<ul class="list-group">
-  <li class="list-group-item"><strong>Nombre:</strong> {{ proyecto.nombre }}</li>
-  <li class="list-group-item"><strong>Descripción:</strong> {{ proyecto.descripcion }}</li>
-  <li class="list-group-item"><strong>Fecha inicio:</strong> {{ proyecto.fecha_ini }}</li>
-  <li class="list-group-item"><strong>Fecha fin:</strong> {{ proyecto.fecha_fin }}</li>
-  <li class="list-group-item"><strong>Presupuesto:</strong> {{ proyecto.presupuesto }} €</li>
+<ul class="lista_general">
+  <li class="lista"><strong>Nombre:</strong> {{ proyecto.nombre }}</li>
+  <li class="lista"><strong>Descripción:</strong> {{ proyecto.descripcion }}</li>
+  <li class="lista"><strong>Fecha fin:</strong> {{ proyecto.fecha_fin }}</li>
+  <li class="lista"><strong>Presupuesto:</strong> {{ proyecto.presupuesto }} €</li>
 </ul>
-<a href="{% url 'proyecto_update' proyecto.pk %}" class="btn btn-warning mt-3">Editar</a>
-<a href="{% url 'proyecto_delete' proyecto.pk %}" class="btn btn-danger mt-3">Eliminar</a>
-<a href="{% url 'proyecto_list' %}" class="btn btn-secondary mt-3">Volver al listado</a>
+<a href="{% url 'proyecto_update' proyecto.pk %}" class="boton_editar">Editar</a>
+<a href="{% url 'proyecto_delete' proyecto.pk %}" class="boton_eliminar">Eliminar</a>
+<a href="{% url 'proyecto_list' %}" class="boton_cancelar">Volver al listado</a>
 {% endblock %}

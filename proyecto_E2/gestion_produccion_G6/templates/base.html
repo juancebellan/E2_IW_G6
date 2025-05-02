@@ -1,29 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <title>Gestión de Proyectos</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="{% static 'CSS/CSSgeneral.css' %}">
   </head>
   <body>
-    <div class="container mt-4">
+    <div class="div_principal">
       <nav>
-        <a href="{% url 'landing' %}">Inicio</a> |
-        <a href="{% url 'proyecto_list' %}">Proyectos</a> |
-        <a href="{% url 'cliente_list' %}">Clientes</a> |
-        <a href="{% url 'empleado_list' %}">Empleados</a> |
-        <a href="{% url 'tarea_list' %}">Tareas</a> |
-        <a href="{% url 'admin:index' %}">Admin</a>
+        <a href="{% url 'landing' %}" class="inicio">Inicio</a> |
+        <a href="{% url 'proyecto_list' %}" class="inicio">Proyectos</a> |
+        <a href="{% url 'cliente_list' %}" class="inicio">Clientes</a> |
+        <a href="{% url 'empleado_list' %}" class="inicio">Empleados</a> |
+        <a href="{% url 'tarea_list' %}" class="inicio">Tareas</a> |
+        <a href="{% url 'admin:index' %}" class="inicio">Admin</a>
       </nav>
       <hr />
 
       {% block content %}{% endblock %}
 
       <hr />
-      <footer class="text-center text-muted mt-4">
+      <footer class="mensaje_footer">
         <p>&copy; 2025 Gestión de Proyectos Grupo 6</p>
       </footer>
     </div>
