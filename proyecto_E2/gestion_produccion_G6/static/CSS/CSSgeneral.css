@@ -146,7 +146,7 @@ h1 {
 .boton_ver,
 .boton_editar,
 .boton_eliminar, .boton_cancelar,
- .boton_guardar {
+ .boton_guardar, .boton_retrasada, boton_entiempo {
   display: inline-block;
   padding: 6px 12px;
   font-size: 0.9rem;
@@ -175,7 +175,7 @@ h1 {
 {
   background-color: #797979;
 }
-.boton_guardar
+.boton_guardar, boton_entiempo
 {
   background-color: #1bee4c;
   width: 13%;
@@ -195,7 +195,7 @@ h1 {
   background-color: #e0a800;
 }
 
-.boton_eliminar {
+.boton_eliminar, .boton_retrasada {
   background-color: #dc3545;
 }
 
