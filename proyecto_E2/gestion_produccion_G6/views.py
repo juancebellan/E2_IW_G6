@@ -1,3 +1,4 @@
+from datetime import date, datetime
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -100,7 +101,10 @@ class TareaListView(ListView):
     model = Tarea
     template_name = 'tarea_list.html'
     context_object_name = 'mi_tarea'
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['fecha_actual'] = date.today()
+        return context
 class TareaDetailView(DetailView):
     model = Tarea
     template_name = 'tarea_detail.html'
