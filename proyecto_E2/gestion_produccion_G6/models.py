@@ -8,6 +8,7 @@ class Proyecto(models.Model):
     fecha_ini = models.DateField(default=datetime.date.today)
     fecha_fin = models.DateField(default=datetime.date.today)
     presupuesto = models.IntegerField(default=0)
+    responsables = models.ManyToManyField('Empleado', blank=True, related_name='proyectos_responsables')
     def __str__(self):
         return self.nombre
 

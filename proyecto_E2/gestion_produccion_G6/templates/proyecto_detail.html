@@ -6,6 +6,17 @@
   <li class="lista"><strong>Descripción:</strong> {{ proyecto.descripcion }}</li>
   <li class="lista"><strong>Fecha fin:</strong> {{ proyecto.fecha_fin }}</li>
   <li class="lista"><strong>Presupuesto:</strong> {{ proyecto.presupuesto }} €</li>
+  <li class="lista"><strong>Responsables:</strong>
+    {% if proyecto.responsables.all %}
+      <ul>
+        {% for empleado in proyecto.responsables.all %}
+          <li>{{ empleado.nombre }} {{ empleado.apellidos }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      No hay responsables asignados.
+    {% endif %}
+  </li>
 </ul>
 <a href="{% url 'proyecto_update' proyecto.pk %}" class="boton_editar">Editar</a>
 <a href="{% url 'proyecto_delete' proyecto.pk %}" class="boton_eliminar">Eliminar</a>
