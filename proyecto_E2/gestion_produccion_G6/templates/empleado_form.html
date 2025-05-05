@@ -1,10 +1,14 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <h1>{% if empleado %}Editar{% else %}Nuevo{% endif %} Empleado</h1>
 <form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
+  {% csrf_token %} {{ form.as_p }}
   <button type="submit" class="boton_guardar">Guardar</button>
+  {% if empleado.pk %}
+  <a href="{% url 'empleado_detail' empleado.pk %}" class="boton_cancelar"
+    >Cancelar</a
+  >
+  {% else %}
   <a href="{% url 'empleado_list' %}" class="boton_cancelar">Cancelar</a>
+  {% endif %}
 </form>
 {% endblock %}

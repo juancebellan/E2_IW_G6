@@ -1,10 +1,11 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <h1>¿Estás seguro de que quieres borrar este proyecto?</h1>
 <p><strong>{{ proyecto.nombre }}</strong></p>
 <form method="post">
   {% csrf_token %}
   <button type="submit" class="boton_eliminar">Sí, eliminar</button>
-  <a href="{% url 'proyecto_list' %}" class="btn btn-secondary">Cancelar</a>
+  <a href="{% url 'proyecto_detail' proyecto.pk %}" class="btn btn-secondary"
+    >Cancelar</a
+  >
 </form>
 {% endblock %}

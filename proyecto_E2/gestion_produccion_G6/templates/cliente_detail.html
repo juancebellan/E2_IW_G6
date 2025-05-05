@@ -1,14 +1,20 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <h1>Detalle del cliente</h1>
 <ul class="lista_general">
-  <li class="lista"><strong>Proyecto asociado: </strong> {{ mi_cliente.proyecto }}</li>
-  <li class="lista"><strong>Número de identificación fiscal (CIF): </strong> {{ mi_cliente.cif }}</li>
-  <li class="lista"><strong>Nombre: </strong> {{ mi_cliente.nombre }}</li>
-  <li class="lista"><strong>Nacionalidad: </strong> {{ mi_cliente.nacionalidad }}</li>
+  <li class="lista">
+    <strong>Proyecto asociado: </strong> {{ cliente.proyecto }}
+  </li>
+  <li class="lista">
+    <strong>Número de identificación fiscal (CIF): </strong> {{ cliente.cif }}
+  </li>
+  <li class="lista"><strong>Nombre: </strong> {{ cliente.nombre }}</li>
+  <li class="lista">
+    <strong>Nacionalidad: </strong> {{ cliente.nacionalidad }}
+  </li>
 </ul>
-<a href="{% url 'cliente_update' mi_cliente.pk %}" class="boton_editar">Editar</a>
-<a href="{% url 'cliente_delete' mi_cliente.pk %}" class="boton_eliminar">Eliminar</a>
+<a href="{% url 'cliente_update' cliente.pk %}" class="boton_editar">Editar</a>
+<a href="{% url 'cliente_delete' cliente.pk %}" class="boton_eliminar"
+  >Eliminar</a
+>
 <a href="{% url 'cliente_list' %}" class="boton_cancelar">Volver al listado</a>
 {% endblock %}
-

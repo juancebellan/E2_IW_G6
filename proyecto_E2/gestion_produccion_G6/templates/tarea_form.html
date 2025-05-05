@@ -1,10 +1,14 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>{% if form.instance.pk %}Editar{% else %}Nueva{% endif %} Tarea</h1>
+{% extends "base.html" %} {% block content %}
+<h1>{% if tarea.pk %}Editar{% else %}Nueva{% endif %} Tarea</h1>
 <form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
+  {% csrf_token %} {{ form.as_p }}
   <button type="submit" class="boton_guardar">Guardar</button>
+  {% if tarea.pk %}
+  <a href="{% url 'tarea_detail' tarea.pk %}" class="boton_cancelar"
+    >Cancelar</a
+  >
+  {% else %}
   <a href="{% url 'tarea_list' %}" class="boton_cancelar">Cancelar</a>
+  {% endif %}
 </form>
 {% endblock %}
