@@ -19,8 +19,8 @@ python manage.py runserver
 ## Autores
 
 - [Juan Cebellán](https://www.github.com/juancebellan)
-- [Unai Pinilla](https://www.github.com/Xabierlb)
-- [Xabier Ochoa](https://www.github.com/unaipini)
+- [Unai Pinilla](https://www.github.com/unaipini)
+- [Xabier Ochoa](https://www.github.com/Xabierlb)
 
 
 ## Funcionalidades
