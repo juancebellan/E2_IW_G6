@@ -8,6 +8,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Cliente, Empleado, Proyecto, Tarea
 from django.urls import reverse, reverse_lazy
+from .forms import ProyectoForm
+
 
 
 def landing(request):
@@ -22,29 +24,34 @@ class ProyectoListView(ListView):
     template_name = 'proyecto_list.html'
     context_object_name = 'proyectos'
 
+
+
 class ProyectoDetailView(DetailView):
     """Vista que muestra el detalle de un proyecto específico."""
     model = Proyecto
     template_name = 'proyecto_detail.html'
     context_object_name = 'proyecto'
 
+
 class ProyectoCreateView(CreateView):
     """Vista que permite crear un nuevo proyecto."""
     model = Proyecto
-    fields = '__all__'
+    form_class = ProyectoForm  
     template_name = 'proyecto_form.html'
     success_url = reverse_lazy('proyecto_list')
+
 
 class ProyectoUpdateView(UpdateView):
     """Vista que permite editar un proyecto existente."""
     model = Proyecto
-    fields = '__all__'
+    form_class = ProyectoForm
     template_name = 'proyecto_form.html'
     context_object_name = 'proyecto'
-
+    ordering = ['nombre']
     def get_success_url(self):
         """Redirige al proyecto que se ha actualizado."""
         return reverse('proyecto_detail', kwargs={'pk': self.object.pk})
+
 
 class ProyectoDeleteView(DeleteView):
     """Vista que permite eliminar un proyecto."""
@@ -60,6 +67,8 @@ class ClienteListView(ListView):
     model = Cliente
     template_name = 'cliente_list.html'
     context_object_name = 'clientes'
+    ordering = ['nombre']
+
 
 class ClienteDetailView(DetailView):
     """Vista que muestra el detalle de un cliente específico."""
@@ -99,6 +108,7 @@ class EmpleadoListView(ListView):
     model = Empleado
     template_name = 'empleado_list.html'
     context_object_name = 'empleados'
+    ordering = ['nombre']
 
 class EmpleadoDetailView(DetailView):
     """Vista que muestra el detalle de un empleado específico."""
