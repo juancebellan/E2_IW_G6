@@ -69,7 +69,6 @@ class ClienteListView(ListView):
     context_object_name = 'clientes'
     ordering = ['nombre']
 
-
 class ClienteDetailView(DetailView):
     """Vista que muestra el detalle de un cliente específico."""
     model = Cliente
