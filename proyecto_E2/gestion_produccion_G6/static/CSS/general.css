@@ -11,10 +11,6 @@ body {
     display: block;
     margin: 20px auto;
   }
-  h1
-  {
-    justify-content: center;
-  }
   
   .div_principal {
     width: 100%;
@@ -31,8 +27,71 @@ body {
     margin-bottom: 20px;
   }
   
+  /* Inicio */
+  .subtitulo {
+    font-size: 1.2rem;
+    color: #777;
+    margin-bottom: 30px;
+    text-align: center;
+  }
   
+  .descripcion p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 auto;
+    width: 70%;
+    margin-bottom: 40px;
+  }
   
+  .caracteristicas {
+    margin-top: 40px;
+    background-color: #eaf0f3;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .caracteristicas h2 {
+    font-size: 2rem;
+    color: #333333;
+    margin-bottom: 15px;
+  }
+
+  .caracteristicas ul li {
+    font-size: 1.1rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+  
+  .comienza {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .comienza h3 {
+    font-size: 1.8rem;
+    color: #4caf50;
+    margin-bottom: 10px;
+  }
+  
+  .comienza p {
+    font-size: 1.1rem;
+    color: #777777;
+    margin-bottom: 20px;
+  }
+  
+  .comienza .boton-comienza {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .comienza .boton-comienza:hover {
+    background-color: #45a049;
+  } 
   /* Estilo para los bloques de contenido */
   hr {
     border: 0;
@@ -58,12 +117,12 @@ body {
     text-align: center;
   }
   
-  
-  
   h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #333;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    justify-content: center;
   }
   
   p {
@@ -89,22 +148,13 @@ body {
     transform: scale(1.1);
   }
   
-  .inicio 
-  {
+  .inicio {
     background-color: rgb(255, 102, 0);
   }
   
-  .inicio :hover
-  {
+  .inicio :hover {
     background-color: rgb(179, 73, 2);
     transform: scale(1.1);
-  }
-  
-  h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 2rem;
   }
   
   .boton_crear {
@@ -167,8 +217,7 @@ body {
     color:aliceblue;
     font-weight: bold;
   }
-  .boton_entiempo
-  {
+  .boton_entiempo {
     background-color: #1bee4c;
     width: 13%;
   }
@@ -181,24 +230,20 @@ body {
     background-color: #0069d9;
   }
   
-  .boton_cancelar
-  {
+  .boton_cancelar {
     background-color: #9b9b9b;
     color: white;
   }
   
-  .boton_cancelar :hover
-  {
+  .boton_cancelar :hover {
     background-color: #797979;
   }
-  .boton_guardar
-  {
+  .boton_guardar {
     background-color: #1bee4c;
     width: 13%;
   }
   
-  .boton_guardar :hover
-  {
+  .boton_guardar :hover {
     background-color: #10c73b;
   }
   

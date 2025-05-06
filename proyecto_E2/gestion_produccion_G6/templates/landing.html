@@ -1,15 +1,35 @@
-{% extends "base.html" %} {% block content %}
-<div class="text-center mt-5">
-  <h1>Deustotil Tech S.L</h1>
-  <p>Proyectos, clientes, empleados y tareas.</p>
-  <a href="{% url 'proyecto_list' %}""
-    >Proyectos
-  </a>
-  <a href="{% url 'cliente_list' %}"">Clientes </a>
-  <a href="{% url 'empleado_list' %}""
-    >Empleados
-  </a>
-  <a href="{% url 'tarea_list' %}"">Tareas </a>
+{% extends 'base.html' %}
+{% block content %}
+<div class="contenedor-landing">
+  <div class="bienvenida">
+    <h1>Bienvenido a la Gestión de Proyectos</h1>
+    <p class="subtitulo">
+      Organiza, asigna tareas y gestiona empleados de forma eficiente.
+    </p>
+  </div>
+
+  <div class="descripcion">
+    <p>
+      Esta aplicación está diseñada para que nuestro equipo de trabajo pueda gestionar 
+      los proyectos de manera eficiente. Desde la asignación de tareas hasta el control 
+      de tiempo, podremos supervisar y mejorar el flujo de trabajo dentro de nuestro equipo.
+    </p>
+  </div>
+
+  <div class="caracteristicas">
+    <h2>Características Clave</h2>
+    <ul>
+      <li><strong>Gestión de Proyectos:</strong> Visualiza y organiza proyectos con facilidad.</li>
+      <li><strong>Asignación de Tareas:</strong> Distribuye tareas entre los miembros del equipo.</li>
+      <li><strong>Control de Tiempo:</strong> Supervisa los plazos de entrega y el progreso.</li>
+    </ul>
+  </div>
+
+  <div class="comienza">
+    <h3>¡Comienza a gestionar tus proyectos ahora!</h3>
+    <p>Accede a la sección de proyectos, tareas o empleados para empezar a organizarte.</p>
+    <a href="{% url 'proyecto_list' %}" class="boton-comienza">Ver Proyectos</a>
+  </div>
+
 </div>
 {% endblock %}
-
