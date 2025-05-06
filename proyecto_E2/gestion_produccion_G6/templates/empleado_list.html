@@ -1,15 +1,18 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <h1>Empleados</h1>
 <a href="{% url 'empleado_create' %}" class="boton_crear">Nuevo Empleado</a>
 <ul class="lista_general">
   {% for empleado in empleados %}
   <li class="lista">
-    <strong>{{ empleado.nombre }} {{ empleado.apellidos }}</strong><br>
-    Email: {{ empleado.email }} | Teléfono: {{ empleado.telefono }}<br>
+    <strong>{{ empleado.nombre }} {{ empleado.apellidos }}</strong><br />
+    Email: {{ empleado.email }} | Teléfono: {{ empleado.telefono }}<br />
     <a href="{% url 'empleado_detail' empleado.pk %}" class="boton_ver">Ver</a>
-    <a href="{% url 'empleado_update' empleado.pk %}" class="boton_editar">Editar</a>
-    <a href="{% url 'empleado_delete' empleado.pk %}" class="boton_eliminar">Borrar</a>
+    <a href="{% url 'empleado_update' empleado.pk %}" class="boton_editar"
+      >Editar</a
+    >
+    <a href="{% url 'empleado_delete' empleado.pk %}" class="boton_eliminar"
+      >Borrar</a
+    >
   </li>
   {% empty %}
   <li class="lista">No hay empleados disponibles.</li>

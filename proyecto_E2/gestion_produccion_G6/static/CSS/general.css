@@ -1,0 +1,244 @@
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  img {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+  }
+  h1
+  {
+    justify-content: center;
+  }
+  
+  .div_principal {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  nav {
+  
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  
+  
+  /* Estilo para los bloques de contenido */
+  hr {
+    border: 0;
+    border-top: 2px solid #eee;
+    margin: 30px 0;
+  }
+  
+  /* Footer */
+  .mensaje_footer {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    padding: 20px 0;
+    background-color: #9eabf4;
+    color: white;
+  }
+  
+  .mensaje_footer p {
+    margin: 0;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  
+  
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+  
+  a {
+    text-decoration: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  a :hover {
+    background-color: hsl(211, 100%, 35%);
+    transform: scale(1.1);
+  }
+  
+  .inicio 
+  {
+    background-color: rgb(255, 102, 0);
+  }
+  
+  .inicio :hover
+  {
+    background-color: rgb(179, 73, 2);
+    transform: scale(1.1);
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+  }
+  
+  .boton_crear {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 1.5rem auto;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .boton_crear:hover {
+    background-color: #218838;
+  }
+  
+  .lista_general {
+    list-style: none;
+    padding: 0;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .lista {
+    background-color: #f0f0f0;
+    padding: 15px 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+  }
+  
+  .lista strong {
+    font-size: 1.2rem;
+  }
+  
+  .boton_ver,
+  .boton_editar,
+  .boton_eliminar, .boton_cancelar,
+   .boton_guardar, .boton_retrasada {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    margin-right: 5px;
+    text-decoration: none;
+    color:aliceblue;
+    font-weight: bold;
+  }
+  
+  .boton_entiempo {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    margin-right: 5px;
+    text-decoration: none;
+    color:aliceblue;
+    font-weight: bold;
+  }
+  .boton_entiempo
+  {
+    background-color: #1bee4c;
+    width: 13%;
+  }
+  
+  .boton_ver {
+    background-color: #007bff;
+  }
+  
+  .boton_ver:hover {
+    background-color: #0069d9;
+  }
+  
+  .boton_cancelar
+  {
+    background-color: #9b9b9b;
+    color: white;
+  }
+  
+  .boton_cancelar :hover
+  {
+    background-color: #797979;
+  }
+  .boton_guardar
+  {
+    background-color: #1bee4c;
+    width: 13%;
+  }
+  
+  .boton_guardar :hover
+  {
+    background-color: #10c73b;
+  }
+  
+  .boton_editar {
+    background-color: #ffc107;
+  
+  }
+  
+  .boton_editar:hover {
+    background-color: #e0a800;
+  }
+  
+  .boton_eliminar, .boton_retrasada {
+    background-color: #dc3545;
+  }
+  
+  .boton_eliminar:hover {
+    background-color: #c82333;
+  }
+  
+  .bloque_centrado {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fefefe;
+    text-align: left;
+  }
+  
+  .botones_centrados {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+ 
+  
+  @media screen and (max-width: 768px) {
+    a.inicio {
+      font-size: 16px;
+      padding: 8px 12px;
+    }
+  }

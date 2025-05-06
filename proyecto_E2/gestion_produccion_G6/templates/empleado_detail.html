@@ -1,6 +1,6 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <h1>Detalle del Empleado</h1>
+
 <ul class="lista_general">
   <li class="lista"><strong>Nombre:</strong> {{ empleado.nombre }}</li>
   <li class="lista"><strong>Apellidos:</strong> {{ empleado.apellidos }}</li>
@@ -9,18 +9,26 @@
   <li class="lista"><strong>Teléfono:</strong> {{ empleado.telefono }}</li>
 </ul>
 
-<h2>Proyectos como responsable</h2>
-{% if empleado.proyecto_set.all %}
-  <ul>
-    {% for proyecto in empleado.proyecto_set.all %}
-      <li><a href="{% url 'proyecto_detail' proyecto.pk %}">{{ proyecto.nombre }}</a></li>
-    {% endfor %}
-  </ul>
+<h3>Proyectos como responsable:</h3>
+{% if proyectos_como_responsable %}
+<ul>
+  {% for proyecto in proyectos_como_responsable %}
+  <li>{{ proyecto.nombre }}</li>
+  {% endfor %}
+</ul>
 {% else %}
-  <p>No está asignado como responsable en ningún proyecto</p>
+<p>No está asignado como responsable en ningún proyecto.</p>
 {% endif %}
 
-<a href="{% url 'empleado_update' empleado.pk %}" class="boton_editar">Editar</a>
-<a href="{% url 'empleado_delete' empleado.pk %}" class="boton_eliminar">Eliminar</a>
-<a href="{% url 'empleado_list' %}" class="boton_cancelar">Volver al listado</a>
+<div class="botones_centrados">
+  <a href="{% url 'empleado_update' empleado.pk %}" class="boton_editar"
+    >Editar</a
+  >
+  <a href="{% url 'empleado_delete' empleado.pk %}" class="boton_eliminar"
+    >Eliminar</a
+  >
+  <a href="{% url 'empleado_list' %}" class="boton_cancelar"
+    >Volver al listado</a
+  >
+</div>
 {% endblock %}

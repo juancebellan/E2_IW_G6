@@ -4,11 +4,15 @@
 <ul class="lista_general">
   {% for proyecto in proyectos %}
   <li class="lista">
-    <strong>{{ proyecto.nombre }}</strong><br>
-    Descripción: {{ proyecto.descripcion }}<br>
+    <strong>{{ proyecto.nombre }}</strong><br />
+    Descripción: {{ proyecto.descripcion }}<br />
     <a href="{% url 'proyecto_detail' proyecto.pk %}" class="boton_ver">Ver</a>
-    <a href="{% url 'proyecto_update' proyecto.pk %}" class="boton_editar">Editar</a>
-    <a href="{% url 'proyecto_delete' proyecto.pk %}" class="boton_eliminar">Borrar</a>
+    <a href="{% url 'proyecto_update' proyecto.pk %}" class="boton_editar"
+      >Editar</a
+    >
+    <a href="{% url 'proyecto_delete' proyecto.pk %}" class="boton_eliminar"
+      >Borrar</a
+    >
   </li>
   {% empty %}
   <li class="lista">No hay proyectos disponibles.</li>

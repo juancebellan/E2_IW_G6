@@ -13,7 +13,12 @@
   <li class="lista"><strong>Estado:</strong> {{ tarea.estado }}</li>
   <li class="lista"><strong>Notas:</strong> {{ tarea.notas }}</li>
 </ul>
-<a href="{% url 'tarea_update' tarea.pk %}" class="boton_editar">Editar</a>
-<a href="{% url 'tarea_delete' tarea.pk %}" class="boton_eliminar">Eliminar</a>
-<a href="{% url 'tarea_list' %}" class="boton_cancelar">Volver al listado</a>
+
+<div class="botones_centrados">
+  <a href="{% url 'tarea_update' tarea.pk %}" class="boton_editar">Editar</a>
+  <a href="{% url 'tarea_delete' tarea.pk %}" class="boton_eliminar"
+    >Eliminar</a
+  >
+  <a href="{% url 'tarea_list' %}" class="boton_cancelar">Volver al listado</a>
+</div>
 {% endblock %}
