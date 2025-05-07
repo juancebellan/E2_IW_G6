@@ -1,18 +1,17 @@
-
 # Gestión de Proyectos - IW G6
-Aplicación web desarrollada como parte de la asignatura Ingeniería Web, enfocada en la gestión de proyectos y tareas en el entorno industrial. Forma parte del reto 3 propuesto en el proyecto web colaborativo. Permite registrar y administrar proyectos, tareas, empleados y clientes.
 
+Aplicación web desarrollada como parte de la asignatura Ingeniería Web, enfocada en la gestión de proyectos y tareas en el entorno industrial. Forma parte del reto 3 propuesto en el proyecto web colaborativo. Permite registrar y administrar proyectos, tareas, empleados y clientes.
 
 ## Requisitos de instalación
 
 1. Clona el repositorio:
-git clone https://github.com/juancebellan/E2_IW_G6.git
+   git clone https://github.com/juancebellan/E2_IW_G6.git
 
-3. Instala dependencias:
-pip install -r requirements.txt
+2. Instala dependencias:
+   pip install -r requirements.txt
 
-4. Ejecuta el servidor de desarrollo:
-python manage.py runserver
+3. Ejecuta el servidor de desarrollo:
+   python manage.py runserver
 
 > Nota: No se incluye el entorno virtual según las normas de entrega.
 
@@ -20,8 +19,7 @@ python manage.py runserver
 
 - [Juan Cebellán](https://www.github.com/juancebellan)
 - [Unai Pinilla](https://www.github.com/unaipini)
-- [Xabier Ochoa](https://www.github.com/Xabierlb)
-
+- [Xabier Lopez](https://www.github.com/Xabierlb)
 
 ## Funcionalidades
 
