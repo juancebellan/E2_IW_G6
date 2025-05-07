@@ -1,5 +1,5 @@
 from django import forms
-from .models import Proyecto, Empleado, Cliente
+from .models import Proyecto, Empleado
 
 class ProyectoForm(forms.ModelForm):
     """
