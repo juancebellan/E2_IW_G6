@@ -7,7 +7,6 @@
     <strong>{{ tarea.nombre }}</strong><br />
     Proyecto: {{ tarea.proyecto }}<br />
     Empleado: {{ tarea.empleado }}<br />
-    Estado: {{ tarea.estado }}<br />
     <a href="{% url 'tarea_detail' tarea.pk %}" class="boton_ver">Ver</a>
     <a href="{% url 'tarea_update' tarea.pk %}" class="boton_editar">Editar</a>
     <a href="{% url 'tarea_delete' tarea.pk %}" class="boton_eliminar"
@@ -15,7 +14,7 @@
     >
     <br />
     {% if tarea.estado == "Finalizada" %}
-    <p class="boton_entiempo">FINALIZADA</p>
+    <p class="boton_finalizada">FINALIZADA</p>
     {% elif tarea.fecha_fin < fecha_actual %}
     <p class="boton_retrasada">TAREA RETRASADA</p>
     {% else %}

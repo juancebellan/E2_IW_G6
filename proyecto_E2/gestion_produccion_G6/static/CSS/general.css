@@ -218,10 +218,24 @@ body {
     font-weight: bold;
   }
   .boton_entiempo {
-    background-color: #1bee4c;
+    background-color: #83811b;
     width: 13%;
   }
   
+  .boton_finalizada {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    margin-right: 5px;
+    text-decoration: none;
+    color:aliceblue;
+    font-weight: bold;
+  }
+  .boton_finalizada {
+    background-color: #1eff00;
+    width: 13%;
+  }
   .boton_ver {
     background-color: #007bff;
   }
