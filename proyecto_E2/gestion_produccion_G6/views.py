@@ -4,11 +4,14 @@ Contiene vistas para clientes, empleados, proyectos y tareas.
 """
 
 from datetime import date
+from urllib import request
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Cliente, Empleado, Proyecto, Tarea
 from django.urls import reverse, reverse_lazy
 from .forms import ProyectoForm
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 
 
@@ -128,6 +131,47 @@ class EmpleadoCreateView(CreateView):
     fields = '__all__'
     template_name = 'empleado_form.html'
     success_url = reverse_lazy('empleado_list')
+    def form_valid(self, form):
+        response = super().form_valid(form) 
+        empleado = self.object   
+
+        mensaje = f"""
+        ¡Hola {empleado.nombre} {empleado.apellidos}!
+
+        En nombre de todo el equipo de Deustotil S.L, quiero darte una calurosa bienvenida. Estamos muy emocionados de que te unas a nosotros y confiamos en que tu talento y 
+        dedicación serán una gran adición a nuestra familia.
+
+        Aquí en Deustotil, valoramos el trabajo en equipo, la innovación y la pasión por lo que hacemos. Creemos que juntos alcanzaremos grandes logros, y estamos seguros de que te
+        sentirás como en casa en poco tiempo.
+
+        A lo largo de tu proceso de integración, tendrás el apoyo de todo el equipo para que tu transición sea lo más fluida posible. Si en algún momento tienes preguntas o necesitas
+        algo, no dudes en acercarte a cualquiera de nosotros.
+
+        ¡Esperamos que disfrutes de esta nueva etapa y que juntos podamos construir un futuro brillante!
+
+        Bienvenido nuevamente, ¡estamos felices de tenerte con nosotros!
+
+        Saludos cordiales,  
+        Deustotil S.L
+        """
+
+
+           
+
+        send_mail(
+            subject="Bienvenido al grupo Deustotil S.L!!",
+            message= mensaje,
+            from_email="infotareasg6@gmail.com",
+            recipient_list=[empleado.email], 
+            fail_silently=False,
+            
+        )
+        
+
+        return response
+        
+        
+
 
 class EmpleadoUpdateView(UpdateView):
     """Vista que permite editar un empleado existente."""
@@ -191,3 +235,5 @@ class TareaDeleteView(DeleteView):
     template_name = 'tarea_confirm_delete.html'
     context_object_name = "tarea"
     success_url = reverse_lazy('tarea_list')
+
+    

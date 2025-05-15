@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('GP/', include('gestion_produccion_G6.urls'))
 ]
-
+# para hacer un get o tal, lo metes en java script (un fetch) este fetch llama a una url que creas, 
+# con la url llamas a un view que pide los datos y los pasa a json directamente
+# 
