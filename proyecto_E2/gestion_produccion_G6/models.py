@@ -20,6 +20,7 @@ class Proyecto(models.Model):
     fecha_ini = models.DateField(default=datetime.date.today)
     fecha_fin = models.DateField(default=datetime.date.today)
     presupuesto = models.IntegerField(default=0)
+    cliente = models.ForeignKey('Cliente', on_delete=models.CASCADE, null=True, blank=True) 
     responsables = models.ManyToManyField('Empleado', blank=True, related_name='proyectos_responsables')
     def __str__(self):
         """Devuelve el nombre del proyecto."""
@@ -63,7 +64,6 @@ class Cliente(models.Model):
         nombre: Nombre del cliente o empresa.
         nacionalidad: Nacionalidad del cliente.
     """
-    proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE) 
     cif = models.CharField(max_length=10, unique=True)
     nombre = models.CharField(max_length=50)
     nacionalidad = models.CharField(max_length=50)
@@ -110,7 +110,7 @@ class Tarea(models.Model):
             ('Finalizada', 'Finalizada')
         ],
         default='Abierto'
-    )    
+    )     
     notas = models.TextField(default="Notas del empleado")
     def __str__(self):
         """Devuelve el nombre de la tarea"""

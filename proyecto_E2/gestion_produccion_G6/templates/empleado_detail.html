@@ -13,7 +13,7 @@
 {% if proyectos_como_responsable %}
 <ul>
   {% for proyecto in proyectos_como_responsable %}
-  <li>{{ proyecto.nombre }}</li>
+  <li><a href="{% url 'proyecto_detail' proyecto.pk %}" class="referencia""> {{proyecto.nombre}} </a></li>
   {% endfor %}
 </ul>
 {% else %}

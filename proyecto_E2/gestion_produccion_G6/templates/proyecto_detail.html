@@ -28,8 +28,19 @@
   <a href="{% url 'proyecto_delete' proyecto.pk %}" class="boton_eliminar"
     >Eliminar</a
   >
-  <a href="{% url 'proyecto_list' %}" class="boton_cancelar"
+  {% if volver %}
+  <a href="{{ volver }}" class="boton_cancelar"
+    >Volver</a
+  >
+  {% endif %}
+  {% if origen %}
+  <a href="{{ origen }}" class="boton_cancelar"
     >Volver al listado</a
   >
+  {% else %}
+  <a href="{% url 'proyecto_list' %}" class="boton_cancelar"
+    >Volver al listado</a  
+  >
+  {% endif %}
 </div>
 {% endblock %}

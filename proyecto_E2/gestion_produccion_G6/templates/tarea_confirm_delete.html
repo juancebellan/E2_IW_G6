@@ -4,8 +4,14 @@
 <form method="post">
   {% csrf_token %}
   <button type="submit" class="boton_eliminar">Sí, eliminar</button>
-  <a href="{% url 'tarea_detail' tarea.pk %}" class="boton_cancelar"
+  {% if volver %}
+  <a href= "{{volver}}" class="boton_cancelar"
     >Cancelar</a
   >
+  {% else %}
+  <a href= "{% url 'tarea_list' %}" class="boton_cancelar"
+    >Cancelar</a
+  >
+  {% endif %}
 </form>
 {% endblock %}

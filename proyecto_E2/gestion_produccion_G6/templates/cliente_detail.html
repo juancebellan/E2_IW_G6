@@ -12,6 +12,17 @@
     <strong>Nacionalidad: </strong> {{ cliente.nacionalidad }}
   </li>
 </ul>
+<h1>Proyectos a los que pertenece</h1>
+<ul>
+ {% for proyecto in proyecto_cliente %} 
+ <li> 
+  <a href="{% url 'proyecto_detail' proyecto.pk %}"> {{ proyecto.nombre }} </a>
+</li>
+{% empty %}
+<p>No hay proyectos asociados a este cliente</p>
+{% endfor %}
+</ul>
+
 <div class="botones_centrados">
   <a href="{% url 'cliente_update' cliente.pk %}" class="boton_editar"
     >Editar</a
