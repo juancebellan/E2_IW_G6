@@ -20,6 +20,17 @@
 <p>No está asignado como responsable en ningún proyecto.</p>
 {% endif %}
 
+<h3>Tareas asignadas:</h3>
+<ul>
+  {% for tarea in empleado.tarea_set.all %}
+    <li>
+      <a href="{% url 'tarea_detail' tarea.pk %}">{{ tarea.nombre }}</a>
+    </li>
+</ul>
+{% empty %}
+<p>No tiene tareas asignadas.</p>
+{% endfor %}
+
 <div class="botones_centrados">
   <a href="{% url 'empleado_update' empleado.pk %}" class="boton_editar"
     >Editar</a

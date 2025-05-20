@@ -2,9 +2,6 @@
 <h1>Detalle del cliente</h1>
 <ul class="lista_general">
   <li class="lista">
-    <strong>Proyecto asociado: </strong> {{ cliente.proyecto }}
-  </li>
-  <li class="lista">
     <strong>Número de identificación fiscal (CIF): </strong> {{ cliente.cif }}
   </li>
   <li class="lista"><strong>Nombre: </strong> {{ cliente.nombre }}</li>
@@ -14,10 +11,10 @@
 </ul>
 <h1>Proyectos a los que pertenece</h1>
 <ul>
- {% for proyecto in proyecto_cliente %} 
- <li> 
-  <a href="{% url 'proyecto_detail' proyecto.pk %}"> {{ proyecto.nombre }} </a>
-</li>
+  {% for proyecto in cliente.proyecto_set.all %}
+    <li>
+      <a href="{% url 'proyecto_detail' proyecto.id %}">{{ proyecto.nombre }}</a>
+    </li>
 {% empty %}
 <p>No hay proyectos asociados a este cliente</p>
 {% endfor %}

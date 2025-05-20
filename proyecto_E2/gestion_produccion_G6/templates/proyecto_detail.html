@@ -10,6 +10,12 @@
     <strong>Presupuesto:</strong> {{ proyecto.presupuesto }} €
   </li>
   <li class="lista">
+    <strong>Cliente:</strong>
+    <a href="{% url 'cliente_detail' proyecto.cliente.id %}">
+      {{ proyecto.cliente.nombre }}
+    </a>
+  </li>
+  <li class="lista">
     <strong>Responsables:</strong>
     {% if proyecto.responsables.all %}
     <ul>
