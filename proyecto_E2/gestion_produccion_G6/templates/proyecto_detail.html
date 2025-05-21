@@ -14,7 +14,7 @@
     {% if proyecto.responsables.all %}
     <ul>
       {% for empleado in proyecto.responsables.all %}
-      <li>{{ empleado.nombre }} {{ empleado.apellidos }}</li>
+      <li><a href="{% url 'empleado_detail' empleado.pk %}" class="referencia"> {{empleado.nombre}} {{empleado.apelldio}}</a></li>
       {% endfor %}
     </ul>
     {% else %} No hay responsables asignados. {% endif %}

@@ -5,7 +5,8 @@
   <li class="lista"><strong>Descripción:</strong> {{ tarea.descripcion }}</li>
   <li class="lista"><strong>Proyecto:</strong> {{ tarea.proyecto }}</li>
   <li class="lista">
-    <strong>Empleado asignado:</strong> {{ tarea.empleado }}
+    <strong>Empleado asignado:</strong> <a href="{% url 'empleado_detail' tarea.empleado.pk %}" class="referencia">
+      {{tarea.empleado.nombre}} {{tarea.empleado.apellido}}</a>
   </li>
   <li class="lista"><strong>Fecha de inicio:</strong> {{ tarea.fecha_ini }}</li>
   <li class="lista"><strong>Fecha de fin:</strong> {{ tarea.fecha_fin }}</li>

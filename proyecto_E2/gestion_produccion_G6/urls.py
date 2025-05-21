@@ -28,4 +28,6 @@ urlpatterns = [
     path('tareas/<int:pk>/editar/', views.TareaUpdateView.as_view(), name='tarea_update'),
     path('tareas/<int:pk>/borrar/', views.TareaDeleteView.as_view(), name='tarea_delete'),
 
+    path('api/clientes/<int:pk>/', views.get_cliente, name='api_clientes'),
+
 ]

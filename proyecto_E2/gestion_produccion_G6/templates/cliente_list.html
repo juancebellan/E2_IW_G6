@@ -1,21 +1,25 @@
-{% extends "base.html" %} {% block content %}
+
+{% extends "base.html" %}
+{% load static %} {% block content %}
 <h1>Clientes</h1>
-<a href="{% url 'cliente_create' %}" class="boton_crear">Nuevo Cliente</a>
-<ul class="lista_general">
+<a href="{% url 'cliente_create' %}" class="boton_crear" >Nuevo Cliente</a>
+<ul class="lista_general" id="lista_cliente">
   {% for cliente in clientes %}
-  <li class="lista">
-    <strong>{{ cliente.nombre }}</strong><br />
-    CIF: {{ cliente.cif}}<br />
-    <a href="{% url 'cliente_detail' cliente.pk %}" class="boton_ver">Ver</a>
+  <ul class="lista" id={{cliente.pk}}>
+   <li> <strong>{{ cliente.nombre }}</strong><br /></li>
+    <li>CIF: {{ cliente.cif}}</li>
+    <li id="botones{{ cliente.pk }}"><a href="{% url 'cliente_detail' cliente.pk %}" class="boton_ver"  data-pk={{cliente.pk}}>Ver</a>
     <a href="{% url 'cliente_update' cliente.pk %}" class="boton_editar"
-      >Editar</a
-    >
+      >Editar</a>
     <a href="{% url 'cliente_delete' cliente.pk %}" class="boton_eliminar"
-      >Borrar</a
-    >
-  </li>
+      >Borrar</a></li>
+  </ul>
   {% empty %}
   <li class="lista">No hay proyectos disponibles.</li>
+
   {% endfor %}
 </ul>
+<script src="{% static 'js/añadir_datos.js' %}"></script>
 {% endblock %}
+
+

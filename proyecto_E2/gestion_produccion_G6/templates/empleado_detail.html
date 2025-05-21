@@ -25,10 +25,19 @@
     >Editar</a
   >
   <a href="{% url 'empleado_delete' empleado.pk %}" class="boton_eliminar"
-    >Eliminar</a
-  >
-  <a href="{% url 'empleado_list' %}" class="boton_cancelar"
+    >Eliminar</a>
+  {% if volver %}
+  <a href="{{ volver }}" class="boton_cancelar"
+    >Volver</a>
+  {% endif %}
+  {% if origen %}
+  <a href="{{ origen }}" class="boton_cancelar"
     >Volver al listado</a
   >
+  {% else %}
+  <a href="{% url 'empleado_list' %}" class="boton_cancelar"
+    >Volver al listado</a  
+  >
+  {% endif %}
 </div>
 {% endblock %}

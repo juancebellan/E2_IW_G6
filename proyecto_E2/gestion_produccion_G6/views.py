@@ -7,6 +7,7 @@ from datetime import date
 import re
 from urllib import request
 from urllib.parse import urlparse
+from django.http import Http404, JsonResponse
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Cliente, Empleado, Proyecto, Tarea
@@ -49,7 +50,6 @@ class ProyectoDetailView(DetailView):
     context_object_name = 'proyecto'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['proyecto_cliente'] = self.object.Clientes.all()
         context = if_detail(self.request, context)
         context['origen']=self.request.session.get('origen',None)
         return context
@@ -119,6 +119,7 @@ class ClienteDetailView(DetailView):
     context_object_name = "cliente"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['proyectos'] = self.object.proyectos.all()
         context = if_detail(self.request, context)
         context['origen']=self.request.session.get('origen',None)
         return context
@@ -194,9 +195,9 @@ class EmpleadoCreateView(CreateView):
         empleado = self.object   
 
         mensaje = f"""
-        ¡Hola {empleado.nombre} {empleado.apellidos}!
+        ¡Buenas {empleado.nombre}!
 
-        En nombre de todo el equipo de Deustotil S.L, quiero darte una calurosa bienvenida. Estamos muy emocionados de que te unas a nosotros y confiamos en que tu talento y 
+        En nombre de todo el equipo de Deustotil Tech S.L, quiero darte una calurosa bienvenida. Estamos muy emocionados de que te unas a nosotros y confiamos en que tu talento y 
         dedicación serán una gran adición a nuestra familia.
 
         Aquí en Deustotil, valoramos el trabajo en equipo, la innovación y la pasión por lo que hacemos. Creemos que juntos alcanzaremos grandes logros, y estamos seguros de que te
@@ -210,20 +211,20 @@ class EmpleadoCreateView(CreateView):
         Bienvenido nuevamente, ¡estamos felices de tenerte con nosotros!
 
         Saludos cordiales,  
-        Deustotil S.L
+        Deustotil Tech S.L
         """
 
 
            
 
-        # send_mail(
-        #     subject="Bienvenido al grupo Deustotil S.L!!",
-        #     message= mensaje,
-        #     from_email="infotareasg6@gmail.com",
-        #     recipient_list=[empleado.email], 
-        #     fail_silently=False,
+        send_mail(
+            subject="Bienvenido al grupo Deustotil Tech S.L!!",
+            message= mensaje,
+            from_email="infotareasg6@gmail.com",
+            recipient_list=[empleado.email], 
+            fail_silently=False,
             
-        # )
+        )
         
 
         return response
@@ -308,3 +309,19 @@ class TareaDeleteView(DeleteView):
         return context
 
     
+# Obtener datos para Java Script
+
+def get_cliente(request, pk):
+    try:
+        cliente = Cliente.objects.get(id=pk)
+        print(cliente)
+        proyectos = cliente.proyectos.all().values('nombre')
+        data = {
+            "Nombre": cliente.nombre,
+            "CIF": cliente.cif,
+            "Nacionalidad": cliente.nacionalidad,
+            "proyectos" : list(proyectos)
+        }
+        return JsonResponse(data, safe=False)
+    except Cliente.DoesNotExist:
+        raise Http404("Cliente no encontrado")

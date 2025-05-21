@@ -1,4 +1,5 @@
 {% extends "base.html" %} {% block content %}
+
 <h1>Proyectos</h1>
 <a href="{% url 'proyecto_create' %}" class="boton_crear">Nuevo Proyecto</a>
 <ul class="lista_general">
@@ -18,4 +19,5 @@
   <li class="lista">No hay proyectos disponibles.</li>
   {% endfor %}
 </ul>
+
 {% endblock %}
