@@ -24,7 +24,7 @@
 <ul>
   {% for tarea in empleado.tarea_set.all %}
     <li>
-      <a href="{% url 'tarea_detail' tarea.pk %}">{{ tarea.nombre }}</a>
+      <a href="{% url 'tarea_detail' tarea.pk %}" class="referencia">{{ tarea.nombre }}</a>
     </li>
 </ul>
 {% empty %}

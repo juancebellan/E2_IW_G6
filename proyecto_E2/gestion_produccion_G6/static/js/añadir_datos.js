@@ -22,11 +22,7 @@ function añadir_objetos(event) {
         .then(data => {
             for (let clave in data)
             {
-                if (clave == "Nombre")
-                {
-
-                }
-                else if (Array.isArray(data[clave]))
+                if (Array.isArray(data[clave]))
                 {
                     let lista_array = document.createElement("ul");
                     for (let dato of data[clave])
@@ -43,9 +39,9 @@ function añadir_objetos(event) {
                     fila_listilla.textContent = clave + ": " + data[clave];
                     listilla.append(fila_listilla);
                 }
-                let botones_editar = document.querySelectorAll(".boton_editar");
-                let boto_eliminar = document.querySelectorAll(".boton_eliminar");
-                listilla.append(botones_ver[0], botones_editar[0], boto_eliminar[0]);
+                // let botones_editar = document.querySelectorAll(".boton_editar");
+                // let boto_eliminar = document.querySelectorAll(".boton_eliminar");
+                // listilla.append(botones_ver[0], botones_editar[0], boto_eliminar[0]);
 
             }
             
