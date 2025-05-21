@@ -51,10 +51,6 @@ class ProyectoDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-<<<<<<< HEAD
-=======
-        context['proyecto_cliente'] = self.object.cliente
->>>>>>> 96be98acac1409fcea9d5b71721a93ff342c2ab3
         context = if_detail(self.request, context)
         context['origen']=self.request.session.get('origen',None)
         return context
@@ -233,12 +229,8 @@ class EmpleadoCreateView(CreateView):
             recipient_list=[empleado.email], 
             fail_silently=False,
             
-<<<<<<< HEAD
         )
         
-=======
-        # )
->>>>>>> 96be98acac1409fcea9d5b71721a93ff342c2ab3
 
         return response
         
@@ -326,7 +318,6 @@ class TareaDeleteView(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context = if_detail(self.request, context)
-<<<<<<< HEAD
         return context
 
     
@@ -346,6 +337,3 @@ def get_cliente(request, pk):
         return JsonResponse(data, safe=False)
     except Cliente.DoesNotExist:
         raise Http404("Cliente no encontrado")
-=======
-        return context
->>>>>>> 96be98acac1409fcea9d5b71721a93ff342c2ab3
