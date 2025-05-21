@@ -329,8 +329,6 @@ def get_cliente(request, pk):
         print(cliente)
         proyectos = cliente.proyectos.all().values('nombre')
         data = {
-            "Nombre": cliente.nombre,
-            "CIF": cliente.cif,
             "Nacionalidad": cliente.nacionalidad,
             "proyectos" : list(proyectos)
         }

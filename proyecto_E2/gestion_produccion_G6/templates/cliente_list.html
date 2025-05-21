@@ -7,8 +7,8 @@
   {% for cliente in clientes %}
   <ul class="lista" id={{cliente.pk}}>
    <li> <strong>{{ cliente.nombre }}</strong><br /></li>
-    <li>CIF: {{ cliente.cif}}</li>
-    <li id="botones{{ cliente.pk }}"><a href="{% url 'cliente_detail' cliente.pk %}" class="boton_ver"  data-pk={{cliente.pk}}>Ver</a>
+    <li id="final{{cliente.pk}}">CIF: {{ cliente.cif}}</li>
+    <li><a href="{% url 'cliente_detail' cliente.pk %}" class="boton_ver"  data-pk={{cliente.pk}}>Ver</a>
     <a href="{% url 'cliente_update' cliente.pk %}" class="boton_editar"
       >Editar</a>
     <a href="{% url 'cliente_delete' cliente.pk %}" class="boton_eliminar"
@@ -19,7 +19,7 @@
 
   {% endfor %}
 </ul>
-<script src="{% static 'js/añadir_datos.js' %}"></script>
+<script src="{% static 'js/añadir_clientes.js' %}"></script>
 {% endblock %}
 
 
