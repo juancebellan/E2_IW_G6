@@ -9,9 +9,18 @@
     <strong>Nacionalidad: </strong> {{ cliente.nacionalidad }}
   </li>
 </ul>
+<<<<<<< HEAD
 <strong>Proyectos a los que pertenece:</strong>
 {% for proyecto in proyectos %}
  <li><a href="{% url 'proyecto_detail' proyecto.pk %}" class="referencia"> {{proyecto.nombre}}</a></li>
+=======
+<h1>Proyectos a los que pertenece</h1>
+<ul>
+  {% for proyecto in cliente.proyecto_set.all %}
+    <li>
+      <a href="{% url 'proyecto_detail' proyecto.id %}">{{ proyecto.nombre }}</a>
+    </li>
+>>>>>>> 96be98acac1409fcea9d5b71721a93ff342c2ab3
 {% empty %}
 <p>No hay proyectos asociados a este cliente</p>
 {% endfor %}
