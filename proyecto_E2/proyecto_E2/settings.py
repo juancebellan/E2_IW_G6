@@ -131,3 +131,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "infotareasg6@gmail.com"
 EMAIL_HOST_PASSWORD = "xuel wipm liev crar"
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = 'landing'
