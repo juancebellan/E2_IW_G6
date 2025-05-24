@@ -11,10 +11,14 @@
   </li>
   <li class="lista">
     <strong>Cliente:</strong>
+    {% if proyecto.cliente.id%}
     <a href="{% url 'cliente_detail' proyecto.cliente.id %}" class="referencia">
       {{ proyecto.cliente.nombre }}
     </a>
   </li>
+    {% else %}
+    No hay clientes disponibles
+  {% endif %}
   <li class="lista">
     <strong>Responsables:</strong>
     {% if proyecto.responsables.all %}

@@ -15,6 +15,9 @@ from django.urls import path, reverse, reverse_lazy
 from .forms import ProyectoForm
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import ProyectoForm, RegistroForm
+
 
 def if_detail(request,context):
         volver = request.META.get('HTTP_REFERER')
@@ -30,7 +33,7 @@ def landing(request):
 
 
 # PROYECTO
-class ProyectoListView(ListView):
+class ProyectoListView(LoginRequiredMixin, ListView):
     """Vista que muestra un listado de todos los proyectos."""
     model = Proyecto
     template_name = 'proyecto_list.html'
@@ -43,7 +46,7 @@ class ProyectoListView(ListView):
         return super().get(request, *args, **kwargs)
 
 
-class ProyectoDetailView(DetailView):
+class ProyectoDetailView(LoginRequiredMixin, DetailView):
     """Vista que muestra el detalle de un proyecto específico."""
     model = Proyecto
     template_name = 'proyecto_detail.html'
@@ -56,7 +59,7 @@ class ProyectoDetailView(DetailView):
         return context
 
 
-class ProyectoCreateView(CreateView):
+class ProyectoCreateView(LoginRequiredMixin, CreateView):
     """Vista que permite crear un nuevo proyecto."""
     model = Proyecto
     form_class = ProyectoForm  
@@ -69,7 +72,7 @@ class ProyectoCreateView(CreateView):
         return context
 
 
-class ProyectoUpdateView(UpdateView):
+class ProyectoUpdateView(LoginRequiredMixin, UpdateView):
     """Vista que permite editar un proyecto existente."""
     model = Proyecto
     form_class = ProyectoForm
@@ -83,7 +86,7 @@ class ProyectoUpdateView(UpdateView):
         return reverse('proyecto_detail', kwargs={'pk': self.object.pk})
 
 
-class ProyectoDeleteView(DeleteView):
+class ProyectoDeleteView(LoginRequiredMixin, DeleteView):
     """Vista que permite eliminar un proyecto."""
     model = Proyecto
     template_name = 'proyecto_confirm_delete.html'
@@ -98,7 +101,7 @@ class ProyectoDeleteView(DeleteView):
 
 
 # CLIENTE
-class ClienteListView(ListView):
+class ClienteListView(LoginRequiredMixin, ListView):
     """Vista que muestra un listado de todos los clientes."""
     model = Cliente
     template_name = 'cliente_list.html'
@@ -112,7 +115,7 @@ class ClienteListView(ListView):
         return context
 
 
-class ClienteDetailView(DetailView):
+class ClienteDetailView(LoginRequiredMixin, DetailView):
     """Vista que muestra el detalle de un cliente específico."""
     model = Cliente
     template_name = 'cliente_detail.html'
@@ -126,7 +129,7 @@ class ClienteDetailView(DetailView):
         return context
     
 
-class ClienteCreateView(CreateView):
+class ClienteCreateView(LoginRequiredMixin, CreateView):
     """Vista que permite crear un nuevo cliente."""
     model = Cliente
     fields = '__all__'
@@ -134,7 +137,7 @@ class ClienteCreateView(CreateView):
     success_url = reverse_lazy('cliente_list')
 
 
-class ClienteUpdateView(UpdateView):
+class ClienteUpdateView(LoginRequiredMixin, UpdateView):
     """Vista que permite editar un cliente existente."""
     model = Cliente
     fields = '__all__'
@@ -146,7 +149,7 @@ class ClienteUpdateView(UpdateView):
         return reverse('cliente_detail', kwargs={'pk': self.object.pk})
 
 
-class ClienteDeleteView(DeleteView):
+class ClienteDeleteView(LoginRequiredMixin, DeleteView):
     """Vista que permite eliminar un cliente."""
     model = Cliente
     template_name = 'cliente_confirm_delete.html'
@@ -161,7 +164,7 @@ class ClienteDeleteView(DeleteView):
 
 
 # EMPLEADO
-class EmpleadoListView(ListView):
+class EmpleadoListView(LoginRequiredMixin, ListView):
     """Vista que muestra un listado de todos los empleados."""
     model = Empleado
     template_name = 'empleado_list.html'
@@ -175,7 +178,7 @@ class EmpleadoListView(ListView):
         return super().get(request, *args, **kwargs)
 
 
-class EmpleadoDetailView(DetailView):
+class EmpleadoDetailView(LoginRequiredMixin, DetailView):
     """Vista que muestra el detalle de un empleado específico."""
     model = Empleado
     template_name = 'empleado_detail.html'
@@ -190,7 +193,7 @@ class EmpleadoDetailView(DetailView):
         return context
     
     
-class EmpleadoCreateView(CreateView):
+class EmpleadoCreateView(LoginRequiredMixin, CreateView):
     """Vista que permite crear un nuevo empleado."""
     model = Empleado
     fields = '__all__'
@@ -220,22 +223,19 @@ class EmpleadoCreateView(CreateView):
         Saludos cordiales,  
         Deustotil Tech S.L
         """
-           
 
         send_mail(
             subject="Bienvenido al grupo Deustotil Tech S.L!!",
             message= mensaje,
             from_email="infotareasg6@gmail.com",
             recipient_list=[empleado.email], 
-            fail_silently=False,
-            
+            fail_silently=False,   
         )
-        
 
         return response
         
 
-class EmpleadoUpdateView(UpdateView):
+class EmpleadoUpdateView(LoginRequiredMixin, UpdateView):
     """Vista que permite editar un empleado existente."""
     model = Empleado
     fields = '__all__'
@@ -247,7 +247,7 @@ class EmpleadoUpdateView(UpdateView):
         return reverse('empleado_detail', kwargs={'pk': self.object.pk})
 
 
-class EmpleadoDeleteView(DeleteView):
+class EmpleadoDeleteView(LoginRequiredMixin, DeleteView):
     """Vista que permite eliminar un empleado."""
     model = Empleado
     template_name = 'empleado_confirm_delete.html'
@@ -262,7 +262,7 @@ class EmpleadoDeleteView(DeleteView):
 
 
 # TAREA
-class TareaListView(ListView):
+class TareaListView(LoginRequiredMixin, ListView):
     """Vista que muestra un listado de todas las tareas."""
     model = Tarea
     template_name = 'tarea_list.html'
@@ -281,14 +281,14 @@ class TareaListView(ListView):
         return context
 
 
-class TareaDetailView(DetailView):
+class TareaDetailView(LoginRequiredMixin, DetailView):
     """Vista que muestra el detalle de una tarea específica."""
     model = Tarea
     template_name = 'tarea_detail.html'
     context_object_name = 'tarea'
 
 
-class TareaCreateView(CreateView):
+class TareaCreateView(LoginRequiredMixin, CreateView):
     """Vista que permite crear una nueva tarea."""
     model = Tarea
     fields = '__all__'
@@ -296,7 +296,7 @@ class TareaCreateView(CreateView):
     success_url = reverse_lazy('tarea_list')
 
 
-class TareaUpdateView(UpdateView):
+class TareaUpdateView(LoginRequiredMixin, UpdateView):
     """Vista que permite editar una tarea existente."""
     model = Tarea
     fields = '__all__'
@@ -308,7 +308,7 @@ class TareaUpdateView(UpdateView):
         return reverse('tarea_detail', kwargs={'pk': self.object.pk})
 
 
-class TareaDeleteView(DeleteView):
+class TareaDeleteView(LoginRequiredMixin, DeleteView):
     """Vista que permite eliminar una tarea."""
     model = Tarea
     template_name = 'tarea_confirm_delete.html'
@@ -320,9 +320,15 @@ class TareaDeleteView(DeleteView):
         context = if_detail(self.request, context)
         return context
 
-    
-# Obtener datos para Java Script
 
+# LOGIN
+class RegistroView(CreateView):
+    form_class = RegistroForm
+    template_name = 'registro.html'
+    success_url = reverse_lazy('login')
+
+
+# Obtener datos para Java Script
 def get_cliente(request, pk):
     try:
         cliente = Cliente.objects.get(id=pk)
@@ -335,3 +341,38 @@ def get_cliente(request, pk):
         return JsonResponse(data, safe=False)
     except Cliente.DoesNotExist:
         raise Http404("Cliente no encontrado")
+    
+def get_empleados(request, pk):
+    try:
+        empleado = Empleado.objects.get(id=pk)
+        proyectos = empleado.proyectos_responsables.all().values('nombre')
+        tareas = empleado.tareas_empleado.all().values('nombre')
+        data = {
+            "Dni": empleado.dni,
+            "Proyectos": list(proyectos),
+            "Tareas": list(tareas)
+        }
+        return JsonResponse(data, safe=False)
+    except Cliente.DoesNotExist:
+        raise Http404("Cliente no encontrado")
+    
+def get_proyectos(request, pk):
+    try:
+        proyecto = Proyecto.objects.get(id=pk)
+        nombres_empleados = [empleado.nombre for empleado in proyecto.responsables.all()]
+        if proyecto.cliente is not None:
+            cliente = proyecto.cliente.nombre
+        else:
+            cliente = "No hay un cliente asociado"
+        data = {
+            "Fecha fin": proyecto.fecha_fin,
+            "Presupuesto": proyecto.presupuesto,
+            "Cliente": cliente,
+            "Empleados": nombres_empleados
+
+            
+        }
+        return JsonResponse(data, safe=False)
+    except Cliente.DoesNotExist:
+        raise Http404("Cliente no encontrado")
+

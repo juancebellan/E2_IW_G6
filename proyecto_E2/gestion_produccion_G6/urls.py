@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('', views.landing, name='landing'),
@@ -28,6 +29,14 @@ urlpatterns = [
     path('tareas/<int:pk>/editar/', views.TareaUpdateView.as_view(), name='tarea_update'),
     path('tareas/<int:pk>/borrar/', views.TareaDeleteView.as_view(), name='tarea_delete'),
 
+    # APIS
     path('api/clientes/<int:pk>/', views.get_cliente, name='api_clientes'),
+    path('api/empleados/<int:pk>/', views.get_empleados, name='api_clientes'),
+    path('api/proyectos/<int:pk>/', views.get_proyectos, name='api_clientes'),
 
+    # LOG-IN
+    path('registro/', views.RegistroView.as_view(), name='registro'),
+    path('login/', LoginView.as_view(template_name='login.html',  redirect_authenticated_user=True, next_page='landing'), name='login'),
+    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+    
 ]

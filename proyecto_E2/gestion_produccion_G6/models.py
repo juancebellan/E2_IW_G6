@@ -88,7 +88,7 @@ class Tarea(models.Model):
         notas: Comentarios o seguimiento adicional.
     """
     proyecto = models.ForeignKey(Proyecto, on_delete=models.CASCADE)
-    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE)
+    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE,related_name="tareas_empleado")
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField(default="Descripción de la tarea")
     fecha_ini = models.DateField(default=datetime.date.today)

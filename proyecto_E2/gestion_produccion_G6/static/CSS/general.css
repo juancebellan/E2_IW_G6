@@ -216,7 +216,7 @@ body {
   .boton_ver,
   .boton_editar,
   .boton_eliminar, .boton_cancelar,
-   .boton_guardar, .boton_retrasada {
+   .boton_guardar, .boton_retrasada, .boton_ver_mas {
     display: inline-block;
     padding: 6px 12px;
     font-size: 0.9rem;
@@ -298,6 +298,13 @@ body {
     background-color: #c82333;
   }
   
+  .boton_ver_mas {
+  background-color: #17a2b8; /* Azul claro tipo info */
+}
+
+.boton_ver_mas:hover {
+  background-color: #138496;
+}
   .bloque_centrado {
     max-width: 700px;
     margin: 0 auto;
