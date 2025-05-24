@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
+<a href= "tareas/" class="boton_favoritos" id="favoritos">Ver solo favoritos</a>
 <h1>Proyectos</h1>
 <a href="{% url 'proyecto_create' %}" class="boton_crear">Nuevo Proyecto</a>
 <ul class="lista_general">
@@ -15,11 +15,14 @@
       <a href="{% url 'proyecto_delete' proyecto.pk %}" class="boton_eliminar">Borrar</a>
       <a href="{% url 'proyecto_detail' proyecto.pk %}" class="boton_ver_mas">Ver en detalle</a>
     </li>
+    <div>
+    <img src="{% static 'images/nolike.png' %}" alt="Icono" class="corazon" data-pk={{proyecto.pk}}>
+    </div>
   </ul>
   {% empty %}
   <li class="lista">No hay proyectos disponibles.</li>
   {% endfor %}
 </ul>
 
-<script src="{% static 'js/añadir_proyectos.js' %}"></script>
+<script src="{% static 'js/script_proyectos.js' %}"></script>
 {% endblock %}

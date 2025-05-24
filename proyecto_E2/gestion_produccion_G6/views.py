@@ -359,6 +359,7 @@ def get_empleados(request, pk):
 def get_proyectos(request, pk):
     try:
         proyecto = Proyecto.objects.get(id=pk)
+        presupuesto = f"{proyecto.presupuesto}€"
         nombres_empleados = [empleado.nombre for empleado in proyecto.responsables.all()]
         if proyecto.cliente is not None:
             cliente = proyecto.cliente.nombre
@@ -366,7 +367,7 @@ def get_proyectos(request, pk):
             cliente = "No hay un cliente asociado"
         data = {
             "Fecha fin": proyecto.fecha_fin,
-            "Presupuesto": proyecto.presupuesto,
+            "Presupuesto": presupuesto,
             "Cliente": cliente,
             "Empleados": nombres_empleados
 
@@ -375,4 +376,21 @@ def get_proyectos(request, pk):
         return JsonResponse(data, safe=False)
     except Cliente.DoesNotExist:
         raise Http404("Cliente no encontrado")
+    
+def get_tareas(request, pk):
+    try:
+        tarea = Tarea.objects.get(id=pk)
+        data = {
+            "Descripcion": tarea.descripcion,
+            "Proyecto": tarea.proyecto.nombre,
+            "Fecha fin": tarea.fecha_fin,
+            "Prioridad":tarea.prioridad,
+            "Estado": tarea.estado,
+            "Notas": tarea.notas
+            
+        }
+        return JsonResponse(data, safe=False)
+    except Cliente.DoesNotExist:
+        raise Http404("Cliente no encontrado")
+
 

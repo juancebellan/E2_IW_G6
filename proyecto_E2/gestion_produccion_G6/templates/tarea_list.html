@@ -1,28 +1,36 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <h1>Tareas</h1>
 <a href="{% url 'tarea_create' %}" class="boton_crear">Nueva Tarea</a>
 <ul class="lista_general">
   {% for tarea in tareas %}
-  <li class="lista">
-    <strong>{{ tarea.nombre }}</strong><br />
-    Proyecto: {{ tarea.proyecto }}<br />
-    Empleado: {{ tarea.empleado }}<br />
-    <a href="{% url 'tarea_detail' tarea.pk %}" class="boton_ver">Ver</a>
-    <a href="{% url 'tarea_update' tarea.pk %}" class="boton_editar">Editar</a>
-    <a href="{% url 'tarea_delete' tarea.pk %}" class="boton_eliminar"
-      >Borrar</a
-    >
-    <br />
-    {% if tarea.estado == "Finalizada" %}
-    <p class="boton_finalizada">FINALIZADA</p>
-    {% elif tarea.fecha_fin < fecha_actual %}
-    <p class="boton_retrasada">TAREA RETRASADA</p>
-    {% else %}
-    <p class="boton_entiempo">EN TIEMPO</p>
-    {% endif %}
-  </li>
+  <ul class="lista" id="{{ tarea.pk }}">
+    <li><strong>{{ tarea.nombre }}</strong></li>
+    <li id="final{{ tarea.pk }}">
+      Proyecto: {{ tarea.proyecto }}<br />
+      Empleado: {{ tarea.empleado }}
+    </li>
+    <li>
+      <a href="{% url 'tarea_detail' tarea.pk %}" class="boton_ver" data-pk="{{ tarea.pk }}">Ver</a>
+      <a href="{% url 'tarea_update' tarea.pk %}" class="boton_editar">Editar</a>
+      <a href="{% url 'tarea_delete' tarea.pk %}" class="boton_eliminar">Borrar</a>
+      <a href="{% url 'tarea_detail' tarea.pk %}" class="boton_ver_mas">Ver en detalle</a>
+    </li>
+    <li>
+      {% if tarea.estado == "Finalizada" %}
+        <p class="boton_finalizada">FINALIZADA</p>
+      {% elif tarea.fecha_fin < fecha_actual %}
+        <p class="boton_retrasada">TAREA RETRASADA</p>
+      {% else %}
+        <p class="boton_entiempo">EN TIEMPO</p>
+      {% endif %}
+    </li>
+  </ul>
   {% empty %}
   <li class="lista">No hay tareas disponibles.</li>
   {% endfor %}
 </ul>
+<script src="{% static 'js/añadir_tareas.js' %}"></script>
 {% endblock %}
+

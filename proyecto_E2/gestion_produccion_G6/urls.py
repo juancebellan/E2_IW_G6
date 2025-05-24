@@ -31,8 +31,9 @@ urlpatterns = [
 
     # APIS
     path('api/clientes/<int:pk>/', views.get_cliente, name='api_clientes'),
-    path('api/empleados/<int:pk>/', views.get_empleados, name='api_clientes'),
-    path('api/proyectos/<int:pk>/', views.get_proyectos, name='api_clientes'),
+    path('api/empleados/<int:pk>/', views.get_empleados, name='api_empleado'),
+    path('api/proyectos/<int:pk>/', views.get_proyectos, name='api_proyectos'),
+    path('api/tareas/<int:pk>/', views.get_tareas, name='api_tareas'),
 
     # LOG-IN
     path('registro/', views.RegistroView.as_view(), name='registro'),

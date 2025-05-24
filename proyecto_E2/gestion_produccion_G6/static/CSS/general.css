@@ -216,7 +216,7 @@ body {
   .boton_ver,
   .boton_editar,
   .boton_eliminar, .boton_cancelar,
-   .boton_guardar, .boton_retrasada, .boton_ver_mas {
+   .boton_guardar, .boton_retrasada, .boton_ver_mas, .boton_favoritos{
     display: inline-block;
     padding: 6px 12px;
     font-size: 0.9rem;
@@ -262,6 +262,14 @@ body {
   
   .boton_ver:hover {
     background-color: #0069d9;
+  }
+
+  .boton_favoritos {
+    background-color: #00ff2a;
+  }
+  
+  .boton_favoritos:hover {
+    background-color: #00c922;
   }
   
   .boton_cancelar {
@@ -456,3 +464,17 @@ form p textarea:focus {
       padding: 8px 12px;
     }
   }
+
+
+.corazon {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+
+}

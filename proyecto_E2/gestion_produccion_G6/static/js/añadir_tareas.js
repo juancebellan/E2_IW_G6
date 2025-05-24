@@ -1,11 +1,11 @@
 let botones_ver = document.querySelectorAll(".boton_ver");
 
 for (let boton of botones_ver) {
-    boton.addEventListener('click', evento);
+    boton.addEventListener('click', evento_ver);
 }
 
 
-function evento(event) {
+function evento_ver(event) {
     let boton_ver = event.currentTarget;
     let pk = boton_ver.dataset.pk;
     let final = document.getElementById("final" + pk);
@@ -17,7 +17,7 @@ function evento(event) {
 function añadir_objetos(event, boton_ver, pk, final) {
     event.preventDefault();
     console.log(pk)
-    let url = "/api/proyectos/" + pk;
+    let url = "/api/tareas/" + pk;
     console.log(final.textContent)
 
     fetch(url)
@@ -44,7 +44,7 @@ function añadir_objetos(event, boton_ver, pk, final) {
                     } else {
                         for (let dato of data[clave]) {
                             let fila_array = document.createElement("li");
-                            fila_array.textContent = dato;
+                            fila_array.textContent = dato.nombre;
                             lista_array.append(fila_array);
                         }
                     }

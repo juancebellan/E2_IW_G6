@@ -1,11 +1,11 @@
 let botones_ver = document.querySelectorAll(".boton_ver");
 
 for (let boton of botones_ver) {
-    boton.addEventListener('click', evento);
+    boton.addEventListener('click', evento_ver);
 }
 
 
-function evento(event)
+function evento_ver(event)
 {
     let boton_ver = event.currentTarget;
     let pk = boton_ver.dataset.pk;
