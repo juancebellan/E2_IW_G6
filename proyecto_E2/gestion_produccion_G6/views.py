@@ -16,7 +16,7 @@ from .forms import ProyectoForm
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import ProyectoForm, RegistroForm
+from .forms import ProyectoForm, RegistroForm, EmpleadoForm
 
 
 def if_detail(request,context):
@@ -196,7 +196,7 @@ class EmpleadoDetailView(LoginRequiredMixin, DetailView):
 class EmpleadoCreateView(LoginRequiredMixin, CreateView):
     """Vista que permite crear un nuevo empleado."""
     model = Empleado
-    fields = '__all__'
+    form_class = EmpleadoForm
     template_name = 'empleado_form.html'
     success_url = reverse_lazy('empleado_list')
 
@@ -238,7 +238,7 @@ class EmpleadoCreateView(LoginRequiredMixin, CreateView):
 class EmpleadoUpdateView(LoginRequiredMixin, UpdateView):
     """Vista que permite editar un empleado existente."""
     model = Empleado
-    fields = '__all__'
+    form_class = EmpleadoForm
     template_name = 'empleado_form.html'
     context_object_name = 'empleado'
 

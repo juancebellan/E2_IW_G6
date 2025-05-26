@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
 <h1>{% if empleado %}Editar{% else %}Nuevo{% endif %} Empleado</h1>
 <form method="post">
   {% csrf_token %} {{ form.as_p }}
@@ -12,4 +14,6 @@
   {% endif %}
  
 </form>
+
+<script src="{% static 'js/validar_dni.js' %}"></script>
 {% endblock %}

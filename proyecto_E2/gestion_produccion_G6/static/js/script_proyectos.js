@@ -123,6 +123,7 @@ function evento_favoritos(event)
 function mostrarFavoritos(event,listas,boton)
 {
     let salvar;
+
     for (let lista of listas)
     {
         
