@@ -9,14 +9,21 @@
   </head>
   <body>
     <div class="div_principal">
-      <nav>
-        <a href="{% url 'landing' %}?vengo_de=boton_arriba" class="inicio">Inicio</a> 
-        <a href="{% url 'proyecto_list' %}?vengo_de=boton_arriba" class="inicio">Proyectos</a> 
-        <a href="{% url 'cliente_list' %}?vengo_de=boton_arriba" class="inicio">Clientes</a> 
-        <a href="{% url 'empleado_list' %}?vengo_de=boton_arriba" class="inicio">Empleados</a> 
-        <a href="{% url 'tarea_list' %}?vengo_de=boton_arriba" class="inicio">Tareas</a> 
-        <a href="{% url 'admin:index' %}?vengo_de=boton_arriba" class="inicio">Admin</a>
+      <nav class="barra_navegacion">
+        <a href="{% url 'landing' %}?vengo_de=boton_arriba">
+          <img src="{% static 'images/logo.png' %}" alt="Logo de Deustotil Tech S.L." class="img_inicio" />
+        </a>
+        <div class="navegacion_enlaces">
+          <a href="{% url 'proyecto_list' %}?vengo_de=boton_arriba" class="inicio">Proyectos</a> 
+          <a href="{% url 'cliente_list' %}?vengo_de=boton_arriba" class="inicio">Clientes</a> 
+          <a href="{% url 'empleado_list' %}?vengo_de=boton_arriba" class="inicio">Empleados</a> 
+          <a href="{% url 'tarea_list' %}?vengo_de=boton_arriba" class="inicio">Tareas</a> 
+        </div>
+        <div class="navegacion_admin">
+          <a href="{% url 'admin:index' %}?vengo_de=boton_arriba" class="inicio">Admin</a>
+        </div>
       </nav>
+
       <hr />
       <div class="bloque_centrado">{% block content %} {% endblock %}</div>
       <hr />
