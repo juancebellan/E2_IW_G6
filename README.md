@@ -1,6 +1,6 @@
 # Gestión de Proyectos - IW G6
 
-Aplicación web desarrollada como parte de la asignatura Ingeniería Web, enfocada en la gestión de proyectos y tareas en el entorno industrial. Forma parte del reto 3 propuesto en el proyecto web colaborativo. Permite registrar y administrar proyectos, tareas, empleados y clientes.
+Aplicación web desarrollada como parte de la asignatura Ingeniería Web, enfocada en la gestión de proyectos y tareas en el entorno industrial. Forma parte del reto 3 propuesto en el proyecto web colaborativo. Permite registrar y administrar proyectos, tareas, empleados y clientes; además de algunas funcionalidades extra añadidas en la última entrega y que se citaran en 'Funcionalidades'.
 
 ## Requisitos de instalación
 
@@ -30,6 +30,10 @@ Aplicación web desarrollada como parte de la asignatura Ingeniería Web, enfoca
 - Asignación de múltiples responsables a un mismo proyecto (relación many-to-many)
 - Notas editables en tareas
 - Interfaz responsive y validaciones en formularios
+- Envio de email de bienvenida a nuevos empleados
+- Registro de usuarios para entrar en la página
+- Funcion para marcar proyectos como favoritos y filtrarlos
+- Ampliación de información de clientes, empleados y proyectos desde la lista, sin entrar a detalle
 
 ## Uso
 
