@@ -19,13 +19,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import ProyectoForm, RegistroForm, EmpleadoForm
 
 
-def if_detail(request,context):
-        volver = request.META.get('HTTP_REFERER')
-        if volver:
-            path = urlparse(volver).path
-            if re.match(r".*/\d+/?$", path):
-                context['volver'] = volver
-        return context
+def if_detail(request, context):
+    """Agrega al contexto la URL de la que proviene la petición si corresponde a un detalle (con ID numérico al final)."""
+    volver = request.META.get('HTTP_REFERER')
+    if volver:
+        path = urlparse(volver).path
+        if re.match(r".*/\d+/?$", path):
+            context['volver'] = volver
+    return context
+
 
 def landing(request):
     """Vista para la página de inicio del sistema."""
@@ -55,14 +57,14 @@ class ProyectoDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context = if_detail(self.request, context)
-        context['origen']=self.request.session.get('origen',None)
+        context['origen'] = self.request.session.get('origen', None)
         return context
 
 
 class ProyectoCreateView(LoginRequiredMixin, CreateView):
     """Vista que permite crear un nuevo proyecto."""
     model = Proyecto
-    form_class = ProyectoForm  
+    form_class = ProyectoForm
     template_name = 'proyecto_form.html'
     success_url = reverse_lazy('proyecto_list')
 
@@ -79,10 +81,9 @@ class ProyectoUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'proyecto_form.html'
     context_object_name = 'proyecto'
     ordering = ['nombre']
-    
+
     def get_success_url(self):
         """Redirige al proyecto que se ha actualizado."""
-
         return reverse('proyecto_detail', kwargs={'pk': self.object.pk})
 
 
@@ -95,9 +96,8 @@ class ProyectoDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context = if_detail(self.request,context)
+        context = if_detail(self.request, context)
         return context
-
 
 
 # CLIENTE
@@ -111,7 +111,7 @@ class ClienteListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context = if_detail(self.request, context)
-        context['origen']=self.request.session.get('origen',None)
+        context['origen'] = self.request.session.get('origen', None)
         return context
 
 
@@ -125,9 +125,9 @@ class ClienteDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['proyectos'] = self.object.proyectos.all()
         context = if_detail(self.request, context)
-        context['origen']=self.request.session.get('origen',None)
+        context['origen'] = self.request.session.get('origen', None)
         return context
-    
+
 
 class ClienteCreateView(LoginRequiredMixin, CreateView):
     """Vista que permite crear un nuevo cliente."""
@@ -162,7 +162,6 @@ class ClienteDeleteView(LoginRequiredMixin, DeleteView):
         return context
 
 
-
 # EMPLEADO
 class EmpleadoListView(LoginRequiredMixin, ListView):
     """Vista que muestra un listado de todos los empleados."""
@@ -189,10 +188,10 @@ class EmpleadoDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['proyectos_como_responsable'] = self.object.proyectos_responsables.all()
         context = if_detail(self.request, context)
-        context['origen']=self.request.session.get('origen',None)
+        context['origen'] = self.request.session.get('origen', None)
         return context
-    
-    
+
+
 class EmpleadoCreateView(LoginRequiredMixin, CreateView):
     """Vista que permite crear un nuevo empleado."""
     model = Empleado
@@ -201,8 +200,9 @@ class EmpleadoCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('empleado_list')
 
     def form_valid(self, form):
-        response = super().form_valid(form) 
-        empleado = self.object   
+        """Envía un correo de bienvenida al nuevo empleado."""
+        response = super().form_valid(form)
+        empleado = self.object
 
         mensaje = f"""
         ¡Buenas {empleado.nombre}!
@@ -226,14 +226,14 @@ class EmpleadoCreateView(LoginRequiredMixin, CreateView):
 
         send_mail(
             subject="Bienvenido al grupo Deustotil Tech S.L!!",
-            message= mensaje,
+            message=mensaje,
             from_email="infotareasg6@gmail.com",
-            recipient_list=[empleado.email], 
-            fail_silently=False,   
+            recipient_list=[empleado.email],
+            fail_silently=False,
         )
 
         return response
-        
+
 
 class EmpleadoUpdateView(LoginRequiredMixin, UpdateView):
     """Vista que permite editar un empleado existente."""
@@ -258,7 +258,6 @@ class EmpleadoDeleteView(LoginRequiredMixin, DeleteView):
         context = super().get_context_data(**kwargs)
         context = if_detail(self.request, context)
         return context
-
 
 
 # TAREA
@@ -323,26 +322,29 @@ class TareaDeleteView(LoginRequiredMixin, DeleteView):
 
 # LOGIN
 class RegistroView(CreateView):
+    """Vista para registrar un nuevo usuario en el sistema."""
     form_class = RegistroForm
     template_name = 'registro.html'
     success_url = reverse_lazy('login')
 
 
-# Obtener datos para Java Script
+# Obtener datos para JavaScript (AJAX)
 def get_cliente(request, pk):
+    """Devuelve información de un cliente (nacionalidad y proyectos) en formato JSON."""
     try:
         cliente = Cliente.objects.get(id=pk)
-        print(cliente)
         proyectos = cliente.proyectos.all().values('nombre')
         data = {
             "Nacionalidad": cliente.nacionalidad,
-            "proyectos" : list(proyectos)
+            "proyectos": list(proyectos)
         }
         return JsonResponse(data, safe=False)
     except Cliente.DoesNotExist:
         raise Http404("Cliente no encontrado")
-    
+
+
 def get_empleados(request, pk):
+    """Devuelve información de un empleado (DNI, proyectos y tareas) en formato JSON."""
     try:
         empleado = Empleado.objects.get(id=pk)
         proyectos = empleado.proyectos_responsables.all().values('nombre')
@@ -353,44 +355,43 @@ def get_empleados(request, pk):
             "Tareas": list(tareas)
         }
         return JsonResponse(data, safe=False)
-    except Cliente.DoesNotExist:
-        raise Http404("Cliente no encontrado")
-    
+    except Empleado.DoesNotExist:
+        raise Http404("Empleado no encontrado")
+
+
 def get_proyectos(request, pk):
+    """Devuelve información de un proyecto (fecha fin, presupuesto, cliente, empleados) en formato JSON."""
     try:
         proyecto = Proyecto.objects.get(id=pk)
         presupuesto = f"{proyecto.presupuesto}€"
         nombres_empleados = [empleado.nombre for empleado in proyecto.responsables.all()]
-        if proyecto.cliente is not None:
-            cliente = proyecto.cliente.nombre
-        else:
-            cliente = "No hay un cliente asociado"
+        cliente = proyecto.cliente.nombre if proyecto.cliente else "No hay un cliente asociado"
         data = {
             "Fecha fin": proyecto.fecha_fin,
             "Presupuesto": presupuesto,
             "Cliente": cliente,
             "Empleados": nombres_empleados
-
-            
         }
         return JsonResponse(data, safe=False)
-    except Cliente.DoesNotExist:
-        raise Http404("Cliente no encontrado")
-    
+    except Proyecto.DoesNotExist:
+        raise Http404("Proyecto no encontrado")
+
+
 def get_tareas(request, pk):
+    """Devuelve información de una tarea (descripción, proyecto, fechas, prioridad, estado, notas) en formato JSON."""
     try:
         tarea = Tarea.objects.get(id=pk)
         data = {
             "Descripcion": tarea.descripcion,
             "Proyecto": tarea.proyecto.nombre,
             "Fecha fin": tarea.fecha_fin,
-            "Prioridad":tarea.prioridad,
+            "Prioridad": tarea.prioridad,
             "Estado": tarea.estado,
             "Notas": tarea.notas
-            
         }
         return JsonResponse(data, safe=False)
-    except Cliente.DoesNotExist:
-        raise Http404("Cliente no encontrado")
+    except Tarea.DoesNotExist:
+        raise Http404("Tarea no encontrada")
+
 
 
